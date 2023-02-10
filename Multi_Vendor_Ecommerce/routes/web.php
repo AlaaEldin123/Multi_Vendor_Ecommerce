@@ -34,6 +34,8 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
+
+////// ADMIN DASHBOAED
 Route::middleware(['auth','role:admin'])->group(function(){
     
     Route::get('/admin/dashboard',[AdminController::class,'AdminDashboard'])->name('admin.dashboard');
@@ -41,7 +43,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
 });
 
 
-
+////// VENDOR DASHBOAED
 Route::middleware(['auth','role:vendor'])->group(function(){
     
     Route::get('/vendor/dashboard',[VendorController::class,'VendorDashboard'])->name('vendor.dashboard');
