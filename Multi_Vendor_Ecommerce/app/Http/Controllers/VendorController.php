@@ -10,4 +10,10 @@ class VendorController extends Controller
 
         return view('vendor.vendor_dashboard');
     }
+
+
+    public function AdminLogin(){
+        return view('admin.admin_login');
+    } // End Mehtod 
+
 }
