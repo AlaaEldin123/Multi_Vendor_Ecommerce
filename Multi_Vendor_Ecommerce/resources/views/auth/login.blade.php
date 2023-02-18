@@ -14,7 +14,7 @@
 
     <meta charset="utf-8" />
 
-    <title>Easy Shop Online Store </title>
+    <title>Alaa Eldin Online Store </title>
 
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
