@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 class AdminController extends Controller
 {
+    public function AdminLogin(){
+        return view('admin.admin_login');
+    } // End Mehtod 
+
+    
     public function AdminDashboard(){
 
         return view('admin.index');
