@@ -50,7 +50,7 @@
 </div>
 
 
-<div class="col-md-9">
+
 
 <!-- /// Change Password  -->
 
@@ -63,7 +63,7 @@
 
 
 
-    <form method="post" action="{{ route('user.profile.store') }}" > 
+    <form method="post" action="{{ route('user.update.password') }}" > 
             @csrf
 
          @if (session('status'))
@@ -114,7 +114,7 @@
         </div>
     </div>
                                     </div>
-
+                                    <div class="col-md-9">
 
 <div class="tab-content account dashboard-content pl-50">
 <div class="tab-pane fade active show" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
