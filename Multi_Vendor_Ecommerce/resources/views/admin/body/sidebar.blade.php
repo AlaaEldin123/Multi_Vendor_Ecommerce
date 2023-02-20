@@ -41,8 +41,8 @@
             <ul>
                 <li> <a href="{{route('all.category')}}"><i class="bx bx-right-arrow-alt"></i>ALL Category</a>
                 </li>
-                <li> <a href=""><i class="bx bx-right-arrow-alt"></i>Add Category</a>
-            
+                <li> <a href="{{ route('add.category') }}"><i class="bx bx-right-arrow-alt"></i>Add Category</a>
+                </li>            
             </ul>
         </li>
 
