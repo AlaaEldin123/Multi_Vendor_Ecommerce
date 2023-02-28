@@ -144,8 +144,8 @@ Route::controller(SubCategoryController::class)->group(function(){
 
  // Vendor Active and Inactive All Route 
  Route::controller(AdminController::class)->group(function(){
-    Route::get('/inactive/vendor' , 'InactiveVendor')->name('inactive.vendor');
-
+ Route::get('/inactive/vendor' , 'InactiveVendor')->name('inactive.vendor');
+ Route::get('/active/vendor' , 'ActiveVendor')->name('active.vendor');
 
 });
 
