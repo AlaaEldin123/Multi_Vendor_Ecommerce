@@ -8,7 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VendorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\SubCategoryController;
-
+use App\Http\Controllers\Backend\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -151,6 +151,19 @@ Route::controller(SubCategoryController::class)->group(function(){
  Route::get('/active/vendor/details/{id}' , 'ActiveVendorDetails')->name('active.vendor.details');
  Route::post('/inactive/vendor/approve' , 'InActiveVendorApprove')->name('inactive.vendor.approve');
 });
+
+
+
+// Product All Route 
+Route::controller(ProductController::class)->group(function(){
+    Route::get('/all/product' , 'AllProduct')->name('all.product');
+    Route::get('/add/subcategory' , 'AddSubCategory')->name('add.subcategory');
+
+
+});
+
+
+
 
 
 
