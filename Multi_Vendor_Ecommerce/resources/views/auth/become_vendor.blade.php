@@ -45,8 +45,9 @@
                                         </div>
 
 
- <form method="POST" action="{{ route('register') }}">
-            @csrf
+ <form method="POST" action="{{ route('vendor.register') }}">
+                                            
+                      @csrf
 
 
     <div class="form-group">
