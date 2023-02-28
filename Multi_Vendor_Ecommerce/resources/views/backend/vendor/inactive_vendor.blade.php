@@ -104,9 +104,7 @@
 
 				<td>
 
-<a href="{{ route('edit.subcategory',$item->id) }}" class="btn btn-info">Vendor Details</a>
-
-
+                    <a href="{{ route('inactive.vendor.details',$item->id) }}" class="btn btn-info">Vendor Details</a>
 
 
 
