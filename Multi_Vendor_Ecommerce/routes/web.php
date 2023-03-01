@@ -134,6 +134,8 @@ Route::controller(SubCategoryController::class)->group(function(){
     Route::post('/update/subcategory' , 'UpdateSubCategory')->name('update.subcategory');
     Route::get('/delete/subcategory/{id}' , 'DeleteSubCategory')->name('delete.subcategory');
 
+    Route::get('/subcategory/ajax/{category_id}' , 'GetSubCategory');
+    
 });
 
 
@@ -154,11 +156,13 @@ Route::controller(SubCategoryController::class)->group(function(){
 
 
 
-// Product All Route 
-Route::controller(ProductController::class)->group(function(){
+    // Product All Route 
+    Route::controller(ProductController::class)->group(function(){
     Route::get('/all/product' , 'AllProduct')->name('all.product');
     Route::get('/add/subcategory' , 'AddSubCategory')->name('add.subcategory');
     Route::get('/add/product' , 'AddProduct')->name('add.product');
+
+    
 
 });
 
