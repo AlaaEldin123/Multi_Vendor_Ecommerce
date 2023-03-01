@@ -24,7 +24,7 @@
 	  <h5 class="card-title">Add New Product</h5>
 	  <hr/>
 
-	  <form id="myForm" method="post" action="{{ route('store.category') }}" enctype="multipart/form-data" >
+	  <form id="myForm" method="post" action="{{ route('store.product') }}" enctype="multipart/form-data" >
 		@csrf
 
 
@@ -143,23 +143,14 @@
 					  </select>
 				  </div>
 
-                  <div class="col-12">
-					<label for="inputCollection" class="form-label">Select Vendor</label>
-					<select name="vendor_id" class="form-select" id="inputCollection">
-						<option></option>
-						<option value="1">One</option>
-						<option value="2">Two</option>
-						<option value="3">Three</option>
-					  </select>
-				  </div>
-
+                 
                   <div class="col-12">
 
                     <div class="row g-3">
                
                     <div class="form-group col-md-6">	
                    <div class="form-check">
-                           <input class="form-check-input" name="hot_deals" type="checkbox" value="1" id="flexCheckDefault">
+					<input class="form-check-input" name="hot_deals" type="checkbox" value="1" id="flexCheckDefault">
                            <label class="form-check-label" for="flexCheckDefault"> Hot Deals</label>
                        </div>
                    </div>
