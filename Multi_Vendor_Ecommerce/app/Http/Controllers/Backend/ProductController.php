@@ -196,8 +196,8 @@ public function UpdateProductThambnail(Request $request){
 
 
 
-    // Multi Image Update 
-    public function UpdateProductMultiimage(Request $request){
+  // Multi Image Update 
+  public function UpdateProductMultiimage(Request $request){
 
     $imgs = $request->multi_img;
 
@@ -205,7 +205,7 @@ public function UpdateProductThambnail(Request $request){
         $imgDel = MultiImg::findOrFail($id);
         unlink($imgDel->photo_name);
 
-    $make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
+$make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
     Image::make($img)->resize(800,800)->save('upload/products/multi-image/'.$make_name);
     $uploadPath = 'upload/products/multi-image/'.$make_name;
 
@@ -224,7 +224,6 @@ public function UpdateProductThambnail(Request $request){
     return redirect()->back()->with($notification); 
 
 }// End Method 
-
 
 
 
