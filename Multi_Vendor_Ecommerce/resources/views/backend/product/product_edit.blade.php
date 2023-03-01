@@ -229,8 +229,7 @@
 
 						@foreach($brands as $brand)
 
-						<option value="{{ $brand->id }}">{{ $brand->brand_name }}</option>
-
+<option value="{{ $brand->id }}" {{ $brand->id == $products->brand_id ? 'selected' : '' }} >{{ $brand->brand_name }}</option>
 						 @endforeach
 
 					  </select>
@@ -250,8 +249,7 @@
 
 						@foreach($categories as $cat)
 
-						<option value="{{ $cat->id }}">{{ $cat->category_name }}</option>
-
+                        <option value="{{ $cat->id }}" {{ $cat->id == $products->category_id ? 'selected' : '' }}>{{ $cat->category_name }}</option>
 						 @endforeach
 
 					  </select>
@@ -271,8 +269,7 @@
 
 						@foreach($subcategory as $subcat)
 
-						<option value="{{ $subcat->id }}">{{ $subcat->subcategory_name }}</option>
-
+                        <option value="{{ $subcat->id }}" {{ $subcat->id == $products->subcategory_id ? 'selected' : '' }}>{{ $subcat->subcategory_name }}</option>
 						 @endforeach
 
 
@@ -298,8 +295,7 @@
 
 					@foreach($activeVendor as $vendor)
 
-						<option value="{{ $vendor->id }}">{{ $vendor->name }}</option>
-
+                    <option value="{{ $vendor->id }}" {{ $vendor->id == $products->vendor_id ? 'selected' : '' }}>{{ $vendor->name }}</option>
 						 @endforeach
 
 					  </select>
@@ -326,7 +322,7 @@
 
     <div class="form-check">
 
- <input class="form-check-input" name="hot_deals" type="checkbox" value="1" id="flexCheckDefault">
+ <input class="form-check-input" {{ $products->hot_deals == 1 ? 'checked' : '' }} name="hot_deals" type="checkbox" value="1" id="flexCheckDefault">
 
 			<label class="form-check-label" for="flexCheckDefault"> Hot Deals</label>
 
@@ -341,7 +337,7 @@
 
     <div class="form-check">
 
-			<input class="form-check-input" name="featured" type="checkbox" value="1" id="flexCheckDefault">
+			<input class="form-check-input" {{ $products->featured == 1 ? 'checked' : '' }} name="featured" type="checkbox" value="1" id="flexCheckDefault">
 
 			<label class="form-check-label" for="flexCheckDefault">Featured</label>
 
@@ -365,7 +361,7 @@
 
     <div class="form-check">
 
-			<input class="form-check-input" name="special_offer" type="checkbox" value="1" id="flexCheckDefault">
+			<input class="form-check-input" {{ $products->special_offer == 1 ? 'checked' : '' }} name="special_offer" type="checkbox" value="1" id="flexCheckDefault">
 
 			<label class="form-check-label" for="flexCheckDefault">Special Offer</label>
 
@@ -383,7 +379,7 @@
 
     <div class="form-check">
 
-			<input class="form-check-input" name="special_deals" type="checkbox" value="1" id="flexCheckDefault">
+			<input class="form-check-input" {{ $products->special_deals == 1 ? 'checked' : '' }} name="special_deals" type="checkbox" value="1" id="flexCheckDefault">
 
 			<label class="form-check-label" for="flexCheckDefault">Special Deals</label>
 
