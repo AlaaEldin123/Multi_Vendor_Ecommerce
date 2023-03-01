@@ -81,8 +81,13 @@ Route::middleware(['auth','role:vendor'])->group(function(){
     Route::get('/vendor/all/product' , 'VendorAllProduct')->name('vendor.all.product');
     Route::get('/vendor/add/product' , 'VendorAddProduct')->name('vendor.add.product');
     Route::get('/vendor/subcategory/ajax/{category_id}' , 'VendorGetSubCategory');
+    Route::post('/vendor/store/product' , 'VendorStoreProduct')->name('vendor.store.product');
+
+
+
+
     });// end vendor group middleware
-    
+
 
 
 

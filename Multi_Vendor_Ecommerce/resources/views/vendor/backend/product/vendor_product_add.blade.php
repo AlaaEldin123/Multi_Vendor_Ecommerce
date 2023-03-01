@@ -25,8 +25,8 @@
 	  <h5 class="card-title">Add New Product</h5>
 	  <hr/>
 
-<form id="myForm" method="post" action="" enctype="multipart/form-data" >
-			@csrf
+      <form id="myForm" method="post" action="{{ route('vendor.store.product') }}" enctype="multipart/form-data" >
+        @csrf
 
        <div class="form-body mt-4">
 	    <div class="row">
