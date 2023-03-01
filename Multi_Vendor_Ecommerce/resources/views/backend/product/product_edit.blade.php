@@ -54,12 +54,12 @@
 
 
 
-<form id="myForm" method="post" action="{{ route('store.product') }}" enctype="multipart/form-data" >
+<form id="myForm" method="post" action="{{ route('update.product') }}" >
 
 			@csrf
+            <input type="hidden" name="id" value="{{ $products->product_thambnail }}">
 
-
-
+<input type="hidden" value="{{$products->}}"    name="old_img">
 
        <div class="form-body mt-4">
 
@@ -418,8 +418,7 @@
 
 					  <div class="d-grid">
 
-					  	<input type="submit" class="btn btn-primary px-4" value="Save Changes" />
-
+                        <input type="submit" class="btn btn-primary px-4" value="Save Changes" />
 
 
 

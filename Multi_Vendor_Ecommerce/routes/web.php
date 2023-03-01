@@ -162,6 +162,9 @@ Route::controller(SubCategoryController::class)->group(function(){
     Route::get('/add/product' , 'AddProduct')->name('add.product');
     Route::post('/store/product' , 'StoreProduct')->name('store.product');
     Route::get('/edit/product/{id}' , 'EditProduct')->name('edit.product');
+    Route::post('/update/product' , 'UpdateProduct')->name('update.product');
+    Route::post('/update/product/product_thambnail' , 'UpdateProductThambnail')->name('update.product.thambnail');
+
 
 });
 
