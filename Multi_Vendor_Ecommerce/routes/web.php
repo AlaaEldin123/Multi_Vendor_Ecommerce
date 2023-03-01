@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Middleware\RedirectIfAuthenticated;
+
+use App\Http\Controllers\Backend\VendorProductController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -171,6 +175,25 @@ Route::controller(SubCategoryController::class)->group(function(){
     Route::get('/product/inactive/{id}' , 'ProductInactive')->name('product.inactive');
     Route::get('/product/active/{id}' , 'ProductActive')->name('product.active');
     Route::get('/delete/product/{id}' , 'ProductDelete')->name('delete.product');
+
+
+
+
+    // Vendor Add Product All Route 
+    Route::controller(VendorProductController::class)->group(function(){
+    Route::get('/vendor/all/product' , 'VendorAllProduct')->name('vendor.all.product');
+    
+    
+
+
+
+
+});
+
+
+
+
+
 
 
 });

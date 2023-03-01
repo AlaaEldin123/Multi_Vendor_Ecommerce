@@ -129,10 +129,11 @@
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class="bx bx-category"></i>
             </div>
-            <div class="menu-title">Product Manage</div>
+            <div class="menu-title">Vendor Manage</div>
         </a>
         <ul>
-            <li> <a href="{{ route('all.product') }}"><i class="bx bx-right-arrow-alt"></i>All Product</a>            </li>
+            <li> <a href="{{ route('vendor.all.product') }}"><i class="bx bx-right-arrow-alt"></i>All Ve</a>
+            </li>
             <li> <a href="{{ route('add.subcategory') }}"><i class="bx bx-right-arrow-alt"></i>Add Product</a>
             </li>
 
