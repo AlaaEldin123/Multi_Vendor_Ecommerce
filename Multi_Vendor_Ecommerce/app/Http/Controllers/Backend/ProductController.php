@@ -226,6 +226,24 @@ $make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
 }// End Method 
 
 
+public function MulitImageDelelte($id){
+    $oldImg = MultiImg::findOrFail($id);
+    unlink($oldImg->photo_name);
+
+    MultiImg::findOrFail($id)->delete();
+
+    $notification = array(
+        'message' => 'Product Multi Image Deleted Successfully',
+        'alert-type' => 'success'
+    );
+
+    return redirect()->back()->with($notification);
+
+}// End Method 
+
+
+
+
 
 
 }
