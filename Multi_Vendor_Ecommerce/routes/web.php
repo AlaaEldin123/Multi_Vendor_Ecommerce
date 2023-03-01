@@ -76,6 +76,7 @@ Route::middleware(['auth','role:vendor'])->group(function(){
 
 
 
+
     // Vendor Add Product All Route 
     Route::controller(VendorProductController::class)->group(function(){
     Route::get('/vendor/all/product' , 'VendorAllProduct')->name('vendor.all.product');
@@ -86,7 +87,11 @@ Route::middleware(['auth','role:vendor'])->group(function(){
 
     Route::post('/vendor/update/product' , 'VendorUpdateProduct')->name('vendor.update.product');
 
+    Route::post('/vendor/update/product/thambnail' , 'VendorUpdateProductThabnail')->name('vendor.update.product.thambnail');
 
+    Route::post('/vendor/update/product/multiimage' , 'VendorUpdateProductmultiImage')->name('vendor.update.product.multiimage');
+
+    Route::get('/vendor/product/multiimg/delete/{id}' , 'VendorMultiimgDelete')->name('vendor.product.multiimg.delete');
 
 
     });// end vendor group middleware
