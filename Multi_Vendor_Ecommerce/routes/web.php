@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VendorController;
@@ -246,7 +247,22 @@ Route::controller(SliderController::class)->group(function(){
 
 
 
+
+
+
+
+
+
+
+
+
+
 }); // End Middleware
+
+
+/// Frontend Product Details All Route 
+
+Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);
 
 
 
