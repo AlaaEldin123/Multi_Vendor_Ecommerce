@@ -327,8 +327,11 @@
                                             alt="" /><strong>Address: </strong>
                                         <span>{{ $product['vendor']['address'] }}</span></li>
                                     <li><img src="assets/imgs/theme/icons/icon-contact.svg"
-                                            alt="" /><strong>Contact Seller:</strong><span>{{ $product['vendor']['phone'] }}</span></li>
+                                            alt="" /><strong>Contact
+                                            Seller:</strong><span>{{ $product['vendor']['phone'] }}</span></li>
                                 </ul>
+
+                                <p>{{ $product['vendor']['vendor_short_info'] }}</p>
                                 <div class="d-flex mb-55">
                                     <div class="mr-30">
                                         <p class="text-brand font-xs">Rating</p>
