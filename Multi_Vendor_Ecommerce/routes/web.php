@@ -28,9 +28,11 @@ use App\Http\Controllers\Backend\BannerController;
 
 
 
-Route::get('/', function () {
-    return view('frontend.index');
-});
+// Route::get('/', function () {
+//     return view('frontend.index');
+// });
+
+Route::get('/', [IndexController::class, 'Index']);
 
 Route::middleware(['auth'])->group(function() {
 
