@@ -96,8 +96,20 @@
             }
         })
         /// Start product view with Modal 
+        function productView(id){
+        // alert(id)
+        $.ajax({
+            type: 'GET',
+            url: '/product/view/modal/'+id,
+            dataType: 'json',
+            success:function(data){
+                console.log(data)
+            }
+        })
+    }
+        
      </script>
-     
+
 </body>
 
 </html>
