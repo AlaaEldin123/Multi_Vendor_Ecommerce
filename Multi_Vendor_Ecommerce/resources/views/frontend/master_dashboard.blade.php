@@ -10,6 +10,7 @@
     <meta property="og:title" content="" />
     <meta property="og:type" content="" />
     <meta property="og:url" content="" />
+    <meta name="csrf-token" content="{{ csrf-token() }}">
     <meta property="og:image" content="" />
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('frontend/assets/imgs/theme/favicon.svg')}}" />
@@ -85,6 +86,18 @@
     <!-- Template  JS -->
     <script src="{{asset('frontend/assets/js/main.js')}}?v=5.3"></script>
     <script src="{{asset('frontend/assets/js/shop.js')}}?v=5.3"></script>
+
+
+    <script type="text/javascript">
+    
+        $.ajaxSetup({
+            headers:{
+                'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('centent')
+            }
+        })
+        /// Start product view with Modal 
+     </script>
+     
 </body>
 
 </html>
