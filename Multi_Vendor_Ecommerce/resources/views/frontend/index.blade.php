@@ -20,7 +20,7 @@
 
 
 
-    home_features_produc
+
     <!--End Best Sales-->
 
 
@@ -64,7 +64,8 @@
                                             <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i
                                                     class="fi-rs-shuffle"></i></a>
                                             <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal"
-                                                data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                                data-bs-target="#quickViewModal" id="{{ $product->id }}"
+                                                onclick="productView(this.id)"><i class="fi-rs-eye"></i></a>
                                         </div>
 
                                         @php
@@ -186,7 +187,8 @@
                                             <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i
                                                     class="fi-rs-shuffle"></i></a>
                                             <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal"
-                                                data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                                data-bs-target="#quickViewModal" id="{{ $product->id }}"
+                                                onclick="productView(this.id)"><i class="fi-rs-eye"></i></a>
                                         </div>
 
                                         @php
@@ -551,7 +553,8 @@
                                 </figure>
                                 <div class="col-md-8 mb-0">
                                     <h6>
-                                        <a href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}">
+                                        <a
+                                            href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}">
                                             {{ $item->product_name }} </a>
                                     </h6>
                                     <div class="product-rate-cover">
