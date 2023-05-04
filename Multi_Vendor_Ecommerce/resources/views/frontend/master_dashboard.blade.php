@@ -110,6 +110,9 @@
                     $('#pbrand').text(data.product.brand.brand_name);
                     $('#pimage').attr('src', '/' + data.product.product_thambnail);
 
+                    $('#product_id').val();
+                    $('#qty').val(1);
+
                     // Product Price 
                     if (data.product.discount_price == null) {
                         $('#pprice').text('');
@@ -155,6 +158,37 @@
                 }
             })
         }
+        ///END PRODUCT VIEW WITH MOEL
+
+
+        ///START ADD TO CART PRODUCT
+
+        function addToCard() {
+            var product_name = $('#pname').text();
+            var product_name = $('#product_id').text();
+            var product_name = $('#color option.selected').text();
+            var product_name = $('#size option.selected').text();
+            var product_name = $('#qty').val();
+            $.ajax({
+                type: "POST",
+                dataType: 'json',
+                data: {
+                    color: color,
+                    size: size ,
+                    quantity : quantity,
+                    product_name : product_name,
+                },
+                url : "/card/data/store/"+id,
+                success:function(data){
+                    console.log(data)
+                }
+
+            })
+
+
+        }
+
+        ///END ADD TO CART PRODUCT
     </script>
 
 </body>
