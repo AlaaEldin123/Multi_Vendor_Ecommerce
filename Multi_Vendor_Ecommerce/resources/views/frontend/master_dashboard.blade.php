@@ -291,13 +291,10 @@
             })
         }
         /// Mini Cart Remove End 
+    </script>
 
 
-
-
-
-
-
+    <script>
         /// Start Details Page Add To Cart Product 
         function addToCartDetails() {
             var product_name = $('#dpname').text();
@@ -346,9 +343,6 @@
         }
         /// Eend Details Page Add To Cart Product 
     </script>
-
-
-
 
 
 
