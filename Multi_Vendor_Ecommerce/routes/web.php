@@ -253,3 +253,6 @@ Route::post('/cart/data/store/{id}', [CartController::class, 'AddToCart']);
 
 /// Add to cart store data
 Route::get('/product/mini/cart', [CartController::class, 'AddMiniCart']);
+
+
+Route::get('/minicart/product/remove/{rowId}', [CartController::class, 'RemoveMiniCart']);

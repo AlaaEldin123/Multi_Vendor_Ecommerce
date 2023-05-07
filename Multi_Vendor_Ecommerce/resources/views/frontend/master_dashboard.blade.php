@@ -221,21 +221,20 @@
         /// End Add To Cart Product 
     </script>
 
-   
-<script type="text/javascript">
-    
-    function miniCart(){
-       $.ajax({
-           type: 'GET',
-           url: '/product/mini/cart',
-           dataType: 'json',
-           success:function(response){
-               // console.log(response)
-           $('span[id="cartSubTotal"]').text(response.cartTotal);
-           $('#cartQty').text(response.cartQty);
-           var miniCart = ""
-           $.each(response.carts, function(key,value){
-              miniCart += ` <ul>
+
+    <script type="text/javascript">
+        function miniCart() {
+            $.ajax({
+                type: 'GET',
+                url: '/product/mini/cart',
+                dataType: 'json',
+                success: function(response) {
+                    // console.log(response)
+                    $('span[id="cartSubTotal"]').text(response.cartTotal);
+                    $('#cartQty').text(response.cartQty);
+                    var miniCart = ""
+                    $.each(response.carts, function(key, value) {
+                        miniCart += ` <ul>
                <li>
                    <div class="shopping-cart-img">
                        <a href="shop-product-right.html"><img alt="Nest" src="/${value.options.image} " style="width:50px;height:50px;" /></a>
@@ -250,15 +249,49 @@
                </li> 
            </ul>
            <hr><br>  
-                  `  
-             });
-               $('#miniCart').html(miniCart);
-           }
-       })
-    }
-     miniCart();
-    
-   </script>
+                  `
+                    });
+                    $('#miniCart').html(miniCart);
+                }
+            })
+        }
+        miniCart();
+
+        /// Mini Cart Remove Start 
+        function miniCartRemove(rowId) {
+            $.ajax({
+                type: 'GET',
+                url: '/minicart/product/remove/' + rowId,
+                dataType: 'json',
+                success: function(data) {
+                    miniCart();
+                    // Start Message 
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                    if ($.isEmptyObject(data.error)) {
+
+                        Toast.fire({
+                            type: 'success',
+                            title: data.success,
+                        })
+                    } else {
+
+                        Toast.fire({
+                            type: 'error',
+                            title: data.error,
+                        })
+                    }
+                    // End Message  
+                }
+            })
+        }
+        /// Mini Cart Remove End 
+    </script>
 
 
 
