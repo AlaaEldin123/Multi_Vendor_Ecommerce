@@ -246,7 +246,10 @@ Route::get('/product/subcategory/{id}/{slug}', [IndexController::class, 'SubCatW
 
 Route::get('/product/view/modal/{id}', [IndexController::class, 'ProductViewAjax']);
 
-// Add To Card Store Data
 
 /// Add to cart store data
 Route::post('/cart/data/store/{id}', [CartController::class, 'AddToCart']);
+
+
+/// Add to cart store data
+Route::get('/product/mini/cart', [CartController::class, 'AddMiniCart']);

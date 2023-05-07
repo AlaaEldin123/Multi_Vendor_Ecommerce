@@ -214,12 +214,33 @@
                     }
                     // End Message  
 
-                    
+
                 }
             })
         }
         /// End Add To Cart Product 
     </script>
+
+<script>
+    function miniCart(){
+        type:'GET',
+        url:'/product/mini/cart',
+        dataType:'json'
+        success:function(response){
+            console.log(response)
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
 
 </body>
 
