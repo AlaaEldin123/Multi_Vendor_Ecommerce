@@ -667,7 +667,7 @@
                     <a type="submit" class="qty-down" id="${value.rowId}" onclick="cartDecrement(this.id)"><i class="fi-rs-angle-small-down"></i></a>
                       
      <input type="text" name="quantity" class="qty-val" value="${value.qty}" min="1">
-                       <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+     <a type="submit" class="qty-up" id="${value.rowId}" onclick="cartIncrement(this.id)"><i class="fi-rs-angle-small-up"></i></a>
                    </div>
                </div>
            </td>
@@ -692,65 +692,72 @@
 
 
         // Cart Remove Start 
-  function cartRemove(id){
+        function cartRemove(id) {
             $.ajax({
                 type: "GET",
                 dataType: 'json',
-                url: "/cart-remove/"+id,
-                success:function(data){
+                url: "/cart-remove/" + id,
+                success: function(data) {
                     cart();
                     miniCart();
-                     // Start Message 
-            const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  
-                  showConfirmButton: false,
-                  timer: 3000 
-            })
-            if ($.isEmptyObject(data.error)) {
-                    
-                    Toast.fire({
-                    type: 'success',
-                    icon: 'success', 
-                    title: data.success, 
+                    // Start Message 
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+
+                        showConfirmButton: false,
+                        timer: 3000
                     })
-            }else{
-               
-           Toast.fire({
-                    type: 'error',
-                    icon: 'error', 
-                    title: data.error, 
-                    })
-                }
-              // End Message  
+                    if ($.isEmptyObject(data.error)) {
+
+                        Toast.fire({
+                            type: 'success',
+                            icon: 'success',
+                            title: data.success,
+                        })
+                    } else {
+
+                        Toast.fire({
+                            type: 'error',
+                            icon: 'error',
+                            title: data.error,
+                        })
+                    }
+                    // End Message  
                 }
             })
         }
-// Cart Remove End 
+        // Cart Remove End 
 
 
 
-// Cart Decrement Start
-function cartDecrement(rowId){
-    $.ajax({
-        type: 'GET',
-        url: "/cart-decrement/"+rowId,
-        dataType: 'json',
-        success:function(data){
-            cart();
-            miniCart();
+        // Cart Decrement Start
+        function cartDecrement(rowId) {
+            $.ajax({
+                type: 'GET',
+                url: "/cart-decrement/" + rowId,
+                dataType: 'json',
+                success: function(data) {
+                    cart();
+                    miniCart();
+                }
+            });
         }
-    });
- }
-// Cart Decrement End 
+        // Cart Decrement End 
 
 
 
-
-
-
-
+        function cartIncrement(rowId) {
+            $.ajax({
+                type: 'GET',
+                url: "/cart-increment/" + rowId,
+                dataType: 'json',
+                success: function(data) {
+                    cart();
+                    miniCart();
+                }
+            });
+        }
     </script>
     <!--  // End Load MY Cart // -->
 
