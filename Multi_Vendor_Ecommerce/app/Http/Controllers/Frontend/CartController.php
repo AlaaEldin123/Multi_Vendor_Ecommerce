@@ -7,6 +7,7 @@ use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use PhpParser\Node\Stmt\Return_;
 
 class CartController extends Controller
 {
@@ -115,4 +116,27 @@ class CartController extends Controller
             return response()->json(['success' => 'Successfully Added on Your Cart']);
         }
     } // End Method
+
+
+    public function MyCart()
+    {
+        return view('frontend.mycart.view_cart');
+        
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
