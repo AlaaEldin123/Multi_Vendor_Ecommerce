@@ -252,6 +252,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/update/coupon', 'UpdateCoupon')->name('update.coupon');
         Route::get('/delete/coupon/{id}', 'DeleteCoupon')->name('delete.coupon');
     });
+
+
+
+    
 });
 
 
