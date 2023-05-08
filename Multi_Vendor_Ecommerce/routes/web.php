@@ -231,21 +231,33 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/delete/slider/{id}', 'DeleteSlider')->name('delete.slider');
     });
 
-    // Banner All Route 
+    // Coupon All Route 
     Route::controller(CouponController::class)->group(function () {
         Route::get('/all/coupon', 'AllCoupon')->name('all.coupon');
-        Route::get('/add/banner', 'AddBanner')->name('add.banner');
-        Route::post('/store/banner', 'StoreBanner')->name('store.banner');
-        Route::get('/edit/banner/{id}', 'EditBanner')->name('edit.banner');
-        Route::post('/update/banner', 'UpdateBanner')->name('update.banner');
-        Route::get('/delete/banner/{id}', 'DeleteBanner')->name('delete.banner');
+        Route::get('/add/coupon', 'AddCoupon')->name('add.coupon');
+        Route::post('/store/coupon', 'StoreCoupon')->name('store.coupon');
+        Route::get('/edit/coupon/{id}', 'EditCoupon')->name('edit.coupon');
+        Route::post('/update/coupon', 'UpdateCoupon')->name('update.coupon');
+        Route::get('/delete/coupon/{id}', 'DeleteCoupon')->name('delete.coupon');
     });
 
-    
+
+
+
+
+
 }); // End Middleware admin
 
 
-/// Frontend Product Details All Route 
+
+
+
+
+
+
+
+
+
 
 /// Frontend Product Details All Route 
 

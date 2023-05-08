@@ -16,12 +16,12 @@
 					</div>
 					<div class="ms-auto">
 						<div class="btn-group">
-		<a href="{{ route('add.subcategory') }}" class="btn btn-primary">Add Coupon</a> 				 
+		<a href="{{ route('add.coupon') }}" class="btn btn-primary">Add Coupon</a> 				 
 						</div>
 					</div>
 				</div>
 				<!--end breadcrumb-->
-
+				 
 				<hr/>
 				<div class="card">
 					<div class="card-body">
@@ -42,7 +42,7 @@
 			<tr>
 				<td> {{ $key+1 }} </td>
 				<td> {{ $item->coupon_name }}</td>
-				<td> { $item->coupon_discount }}  </td>
+				<td> {{ $item->coupon_discount }}% </td>
 				<td> {{ Carbon\Carbon::parse($item->coupon_validity)->format('D, d F Y') }}  </td>
 
 
@@ -54,16 +54,19 @@
 @endif
 
 				  </td>
-
+				
 				<td>
-<a href="{{ route('edit.subcategory',$item->id) }}" class="btn btn-info">Edit</a>
-<a href="{{ route('delete.subcategory',$item->id) }}" class="btn btn-danger" id="delete" >Delete</a>
+
+<a href="{{ route('edit.coupon',$item->id) }}" class="btn btn-info">Edit</a>
+
+
+<a href="{{ route('delete.coupon',$item->id) }}" class="btn btn-danger" id="delete" >Delete</a>
 
 				</td> 
 			</tr>
 			@endforeach
-
-
+			 
+		 
 		</tbody>
 		<tfoot>
 			<tr>
@@ -79,9 +82,9 @@
 						</div>
 					</div>
 				</div>
+ 
 
-
-
+				 
 			</div>
 
 
