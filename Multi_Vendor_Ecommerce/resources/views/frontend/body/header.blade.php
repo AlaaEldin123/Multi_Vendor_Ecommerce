@@ -131,7 +131,7 @@
 
 
                             <div class="header-action-icon-2">
-                                <a href="shop-wishlist.html">
+                                <a href="shop-wishlist.html" href="{{ route('wishlist') }}">
                                     <img class="svgInject" alt="Nest"
                                         src="{{ asset('frontend/assets/imgs/theme/icons/icon-heart.svg') }}" />
                                     <span class="pro-count blue" id="wishQty">0</span>
@@ -143,7 +143,7 @@
 
 
                             <div class="header-action-icon-2">
-                                <a class="mini-cart-icon" href="shop-cart.html">
+                                <a class="mini-cart-icon" href="{{route('mycart')}}">
                                     <img alt="Nest"
                                         src="{{ asset('frontend/assets/imgs/theme/icons/icon-cart.svg') }}" />
                                     <span class="pro-count blue" id="cartQty">0</span>
