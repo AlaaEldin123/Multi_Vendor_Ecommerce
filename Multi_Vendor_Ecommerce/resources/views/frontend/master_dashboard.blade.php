@@ -767,19 +767,26 @@
 
 
 
-{{-- Start Apply Coupon --}}
+    {{-- Start Apply Coupon --}}
 
 
-<script>
-      function applyCoupon(id) {
-        var coupon_name = $('#coupon_name').val();
+    <script>
+        function applyCoupon(id) {
+            var coupon_name = $('#coupon_name').val();
             $.ajax({
                 type: "POST",
                 dataType: 'json',
-                data = {coupon_name:coupon_name}
+                data = {
+                    coupon_name: coupon_name
+                }
                 url: "/coupon-apply",
                 success: function(data) {
-                    
+                    if (data.validity == true) {
+                        $('#couponField').hide();
+
+
+
+                    }
                     // Start Message 
                     const Toast = Swal.mixin({
                         toast: true,
@@ -807,9 +814,9 @@
                 }
             })
         }
-</script>
+    </script>
 
-{{-- End Apply Coupon --}}
+    {{-- End Apply Coupon --}}
 
 
 

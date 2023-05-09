@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Coupon;
 use App\Models\Product;
+use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -121,14 +123,14 @@ class CartController extends Controller
     public function MyCart()
     {
         return view('frontend.mycart.view_cart');
-        
     }
 
 
 
 
 
-    public function GetCartProduct(){
+    public function GetCartProduct()
+    {
 
         $carts = Cart::content();
         $cartQty = Cart::count();
@@ -136,47 +138,62 @@ class CartController extends Controller
 
         return response()->json(array(
             'carts' => $carts,
-            'cartQty' => $cartQty,  
+            'cartQty' => $cartQty,
             'cartTotal' => $cartTotal
 
         ));
+    } // End Method
 
-    }// End Method
 
-
-    public function CartRemove($rowId){
+    public function CartRemove($rowId)
+    {
         Cart::remove($rowId);
         return response()->json(['success' => 'Successfully Remove From Cart']);
-
-    }// End Method
-
+    } // End Method
 
 
-    public function CartDecrement($rowId){
+
+    public function CartDecrement($rowId)
+    {
 
         $row = Cart::get($rowId);
-        Cart::update($rowId, $row->qty -1);
+        Cart::update($rowId, $row->qty - 1);
 
         return response()->json('Decrement');
+    } // End Method
 
-    }// End Method
-
-    public function CartIncrement($rowId){
+    public function CartIncrement($rowId)
+    {
 
         $row = Cart::get($rowId);
-        Cart::update($rowId, $row->qty +1);
+        Cart::update($rowId, $row->qty + 1);
 
         return response()->json('Increment');
-
-    }// End Method
-
+    } // End Method
 
 
 
-    public function CouponApply(){
 
+    public function CouponApply(Request $request)
+    {
+        $coupon = Coupon::where('coupon_name', $request->coupon_name)
+            ->where('coupon_validity', '>=', Carbon::now()->format('Y-m-d'))
+            ->first();
 
+        if ($coupon) {
+            Session::put('coupon', [
+                'coupon_name' => $coupon->coupon_name,
+                'coupon_discount' => $coupon->coupon_discount,
+                'discount_amount' => round(Cart::total() * $coupon->coupon_discount / 100),
+                'total_amount' => round(Cart::total() - Cart::total() * $coupon->coupon_discount / 100),
+            ]);
 
-    }//// END METHOD
-
+            return response()->json([
+                'validity' => true,
+                'success' => 'Coupon Applied Successfully',
+            ]);
+        } else {
+            return response()->json(['error' => 'Invalid Coupon']);
+        }
+    }
 }
