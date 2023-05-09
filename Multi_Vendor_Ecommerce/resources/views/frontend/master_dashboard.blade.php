@@ -783,7 +783,7 @@
                 url: "/coupon-apply",
 
                 success: function(data) {
-                  
+
 
                     if (data.validity == true) {
                         $('#couponField').hide();
@@ -822,6 +822,32 @@
                 }
             })
         }
+
+
+
+        // Start CouponCalculation Method   
+        function couponCalculation() {
+            $.ajax({
+                type: 'GET',
+                url: "/coupon-calculation",
+                dataType: 'json',
+                success: function(data) {
+
+                }
+            })
+        }
+
+
+
+
+
+
+
+
+
+
+
+        
     </script>
 
     {{-- End Apply Coupon --}}
