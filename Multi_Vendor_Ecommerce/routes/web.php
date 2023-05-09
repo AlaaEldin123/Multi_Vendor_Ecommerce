@@ -323,6 +323,10 @@ Route::post('/add-to-wishlist/{product_id}', [WishlistController::class, 'AddToW
 
 Route::post('/add-to-compare/{product_id}', [CompareController::class, 'AddToCompare']);
 
+Route::post('/coupon-apply', [CartController::class, 'CouponApply']);
+
+
+
 
 // User  All Route
 
