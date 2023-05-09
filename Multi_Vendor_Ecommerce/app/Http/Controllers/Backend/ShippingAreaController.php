@@ -208,7 +208,7 @@ class ShippingAreaController extends Controller
     {
 
         $state_id = $request->id;
-
+        
         ShipState::findOrFail($state_id)->update([
             'division_id' => $request->division_id,
             'district_id' => $request->district_id,
