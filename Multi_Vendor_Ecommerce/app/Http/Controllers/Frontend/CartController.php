@@ -175,7 +175,7 @@ class CartController extends Controller
 
 
     public function CouponApply(Request $request)
-    {
+    { 
         $coupon = Coupon::where('coupon_name', $request->coupon_name)
             ->where('coupon_validity', '>=', Carbon::now()->format('Y-m-d'))
             ->first();
@@ -188,10 +188,11 @@ class CartController extends Controller
                 'total_amount' => round(Cart::total() - Cart::total() * $coupon->coupon_discount / 100),
             ]);
 
-            return response()->json([
-                'validity' => true,
-                'success' => 'Coupon Applied Successfully',
-            ]);
+            return response()->json(array(
+                'validity' => true,                
+                'success' => 'Coupon Applied Successfully'
+
+            ));
         } else {
             return response()->json(['error' => 'Invalid Coupon']);
         }

@@ -771,23 +771,27 @@
 
 
     <script>
-        function applyCoupon(id) {
+        function applyCoupon() {
             var coupon_name = $('#coupon_name').val();
             $.ajax({
                 type: "POST",
                 dataType: 'json',
-                data = {
+                data: {
                     coupon_name: coupon_name
-                }
+                },
+
                 url: "/coupon-apply",
+
                 success: function(data) {
+                  
+
                     if (data.validity == true) {
                         $('#couponField').hide();
-
-
-
                     }
+
+
                     // Start Message 
+
                     const Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
@@ -802,6 +806,7 @@
                             icon: 'success',
                             title: data.success,
                         })
+
                     } else {
 
                         Toast.fire({
@@ -810,7 +815,10 @@
                             title: data.error,
                         })
                     }
+
                     // End Message  
+
+
                 }
             })
         }
