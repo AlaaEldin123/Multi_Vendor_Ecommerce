@@ -254,7 +254,7 @@ class CartController extends Controller
 
     public function CheckoutCreate()
     {
-
+        
         if (Auth::check()) {
 
             if (Cart::total() > 0) {
