@@ -10,6 +10,8 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
 use Auth;
+use App\Mail\OrderMail;
+use Illuminate\Support\Facades\Mail;
 
 class StripeController extends Controller
 {
@@ -40,7 +42,7 @@ class StripeController extends Controller
             'user_id' => Auth::id(),
             'division_id' => $request->division_id,
             'district_id' => $request->district_id,
-            'state_id' => $request->state_id,
+            'state_id' => $request->state_id ??  1,
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
@@ -64,6 +66,25 @@ class StripeController extends Controller
 
 
         ]);
+
+
+        // Start Send Email
+
+        $invoice = Order::findOrFail($order_id);
+
+        $data = [
+
+            'invoice_no' => $invoice->invoice_no,
+            'amount' => $total_amount,
+            'name' => $invoice->name,
+            'email' => $invoice->email,
+
+        ];
+
+        Mail::to($request->email)->send(new OrderMail($data));
+
+        // End Send Email 
+
 
         $carts = Cart::content();
         foreach ($carts as $cart) {
@@ -135,18 +156,24 @@ class StripeController extends Controller
 
         ]);
 
-        // Start Send Email
 
-        $invoice = Order::findOrFail($order_id);
 
-        $data = [
+         // Start Send Email
 
-            'invoice_no' => $invoice->invoice_no,
-            'amount' => $total_amount,
-            'name' => $invoice->name,
-            'email' => $invoice->email,
+         $invoice = Order::findOrFail($order_id);
 
-        ];
+         $data = [
+ 
+             'invoice_no' => $invoice->invoice_no,
+             'amount' => $total_amount,
+             'name' => $invoice->name,
+             'email' => $invoice->email,
+ 
+         ];
+ 
+         Mail::to($request->email)->send(new OrderMail($data));
+ 
+         // End Send Email 
 
 
 
