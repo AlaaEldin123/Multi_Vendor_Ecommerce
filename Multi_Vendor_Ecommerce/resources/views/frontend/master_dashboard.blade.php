@@ -720,7 +720,7 @@
 
 
         // Cart Remove Start 
-        function cartRemove(id) {
+        function cartRemove(id){
             $.ajax({
                 type: "GET",
                 dataType: 'json',
