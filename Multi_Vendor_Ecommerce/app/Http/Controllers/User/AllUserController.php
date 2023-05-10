@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Order;
+use App\Models\OrderItem;
 class AllUserController extends Controller
 {
     public function UserAccount()
