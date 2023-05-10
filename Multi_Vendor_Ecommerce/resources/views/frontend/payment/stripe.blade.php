@@ -2,9 +2,9 @@
 @section('main')
     <style>
         /**
-         * The CSS shown here will not be introduced in the Quickstart guide, but shows
-         * how you can use CSS to style your Element's container.
-         */
+             * The CSS shown here will not be introduced in the Quickstart guide, but shows
+             * how you can use CSS to style your Element's container.
+             */
         .StripeElement {
             box-sizing: border-box;
             height: 40px;
@@ -141,19 +141,31 @@
 
                         <form action="{{ route('stripe.order') }}" method="post" id="payment-form">
                             @csrf
-                        <div class="form-row">
-                            <label for="card-element">
-                            Credit or debit card
-                            </label>
-                    
-                            <div id="card-element">
-                            <!-- A Stripe Element will be inserted here. -->
+                            <div class="form-row">
+                                <label for="card-element">
+                                    Credit or debit card
+
+                                    <input type="hidden" name="name" value="{{ $data['shipping_name'] }}">
+                                    <input type="hidden" name="email" value="{{ $data['shipping_email'] }}">
+                                    <input type="hidden" name="phone" value="{{ $data['shipping_phone'] }}">
+                                    <input type="hidden" name="post_code" value="{{ $data['post_code'] }}">
+                                    <input type="hidden" name="division_id" value="{{ $data['division_id'] }}">
+                                    <input type="hidden" name="district_id" value="{{ $data['district_id'] }}">
+                                    <input type="hidden" name="state_id" value="{{ $data['state_id'] }}">
+                                    <input type="hidden" name="address" value="{{ $data['shipping_address'] }}">
+                                    <input type="hidden" name="notes" value="{{ $data['notes'] }}">
+
+
+                                </label>
+
+                                <div id="card-element">
+                                    <!-- A Stripe Element will be inserted here. -->
+                                </div>
+                                <!-- Used to display form errors. -->
+                                <div id="card-errors" role="alert"></div>
                             </div>
-                            <!-- Used to display form errors. -->
-                            <div id="card-errors" role="alert"></div>
-                        </div>
-                        <br>
-                        <button class="btn btn-primary">Submit Payment</button>
+                            <br>
+                            <button class="btn btn-primary">Submit Payment</button>
                         </form>
 
 
@@ -171,7 +183,9 @@
 
     <script type="text/javascript">
         // Create a Stripe client.
-        var stripe = Stripe('pk_test_51JExDrJumxuT02mtAhldPyGMRKgYHmqiCaGEdxehzO9pt2d3gBYaaEuXTDXquz9Q4mi9j6f3OXRa7KkujwSwGZFj00P7U1MgIr');
+        var stripe = Stripe(
+            'pk_test_51JExDrJumxuT02mtAhldPyGMRKgYHmqiCaGEdxehzO9pt2d3gBYaaEuXTDXquz9Q4mi9j6f3OXRa7KkujwSwGZFj00P7U1MgIr'
+            );
         // Create an instance of Elements.
         var elements = stripe.elements();
         // Custom styling can be passed to options when creating an Element.
