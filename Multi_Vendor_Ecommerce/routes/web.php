@@ -23,7 +23,7 @@ use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\User\StripeController;
 use App\Http\Controllers\Backend\VendorOrderController;
-
+use App\Http\Controllers\User\AllUserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -125,8 +125,6 @@ Route::middleware(['auth', 'role:vendor'])->group(function () {
     Route::controller(VendorOrderController::class)->group(function () {
         Route::get('/vendor/order', 'VendorOrder')->name('vendor.order');
     });
-
-    
 }); // end vendor group middleware
 
 
@@ -416,5 +414,10 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         Route::get('/compare', 'AllCompare')->name('compare');
         Route::get('/get-compare-product', 'GetCompareProduct');
         Route::get('/compare-remove/{id}', 'CompareRemove');
+    });
+
+    // User Dashboard All Route 
+    Route::controller(AllUserController::class)->group(function () {
+        Route::get('/user/account/page', 'UserAccount')->name('user.account.page');
     });
 }); // end group middleware user
