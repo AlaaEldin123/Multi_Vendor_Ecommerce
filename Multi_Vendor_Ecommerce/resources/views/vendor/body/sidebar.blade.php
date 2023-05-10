@@ -12,7 +12,7 @@
     <!--navigation-->
     <ul class="metismenu" id="menu">
 
-            <li>
+        <li>
             <a href="">
                 <div class="parent-icon"><i class='bx bx-cookie'></i>
                 </div>
@@ -32,11 +32,12 @@
                 </li>
                 <li> <a href="{{ route('vendor.add.product') }}"><i class="bx bx-right-arrow-alt"></i>Add Product</a>
                 </li>
-                
+
             </ul>
         </li>
-     
 
+        <li> <a href="{{ route('vendor.order') }}"><i class="bx bx-right-arrow-alt"></i>Vendor Order</a>
+        </li>
 
 
 

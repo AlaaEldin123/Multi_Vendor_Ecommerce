@@ -22,7 +22,7 @@ use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\User\StripeController;
-
+use App\Http\Controllers\Backend\VendorOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -119,15 +119,15 @@ Route::middleware(['auth', 'role:vendor'])->group(function () {
         Route::get('/vendor/product/active/{id}', 'VendorProductActive')->name('vendor.product.active');
 
         Route::get('/vendor/delete/product/{id}', 'VendorProductDelete')->name('vendor.delete.product');
-    }); // end vendor group middleware
+    });
 
+    // Brand All Route 
+    Route::controller(VendorOrderController::class)->group(function () {
+        Route::get('/vendor/order', 'VendorOrder')->name('vendor.order');
+    });
 
-
-
-
-
-
-});
+    
+}); // end vendor group middleware
 
 
 
@@ -286,9 +286,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::controller(OrderController::class)->group(function () {
         Route::get('/pending/order', 'PendingOrder')->name('pending.order');
     });
-
-
-    
 });
 
 
