@@ -20,7 +20,7 @@ use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\User\CompareController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\User\CheckoutController;
-
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\User\StripeController;
 
 
@@ -281,6 +281,14 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
         Route::get('/district/ajax/{division_id}', 'GetDistrict');
     });
+
+    // Admin Order All Route 
+    Route::controller(OrderController::class)->group(function () {
+        Route::get('/pending/order', 'PendingOrder')->name('pending.order');
+    });
+
+
+    
 });
 
 
@@ -386,12 +394,10 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 
 
     // Stripe All Route 
-    Route::controller(StripeController::class)->group(function(){
-        Route::post('/stripe/order' , 'StripeOrder')->name('stripe.order');
-        Route::post('/cash/order' , 'CashOrder')->name('cash.order');
-    
-    
-    }); 
+    Route::controller(StripeController::class)->group(function () {
+        Route::post('/stripe/order', 'StripeOrder')->name('stripe.order');
+        Route::post('/cash/order', 'CashOrder')->name('cash.order');
+    });
 
 
 
