@@ -116,7 +116,7 @@
                                                                         <span
                                                                             class="badge rounded-pill bg-danger">Processing</span>
                                                                     @elseif($order->status == 'deliverd')
-                                                                        <span
+                                                                         <span
                                                                             class="badge rounded-pill bg-success">Deliverd</span>
                                                                     @endif
 
