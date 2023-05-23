@@ -1,182 +1,165 @@
 @extends('admin.admin_dashboard')
 
 @section('admin')
+    <div class="page-content">
 
+        <!--breadcrumb-->
 
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
 
+            <div class="breadcrumb-title pe-3">All Confirmed Order</div>
 
-<div class="page-content">
+            <div class="ps-3">
 
-				<!--breadcrumb-->
+                <nav aria-label="breadcrumb">
 
-				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                    <ol class="breadcrumb mb-0 p-0">
 
-					<div class="breadcrumb-title pe-3">All Confirmed Order</div>
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
 
-					<div class="ps-3"> 
+                        </li>
 
-						<nav aria-label="breadcrumb">
+                        <li class="breadcrumb-item active" aria-current="page">All Confirmed Order</li>
 
-							<ol class="breadcrumb mb-0 p-0">
+                    </ol>
 
-								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                </nav>
 
-								</li>
+            </div>
 
-								<li class="breadcrumb-item active" aria-current="page">All Confirmed Order</li>
+            <div class="ms-auto">
 
-							</ol>
+                <div class="btn-group">
 
-						</nav>
 
-					</div>
 
-					<div class="ms-auto">
 
-						<div class="btn-group">
+                </div>
 
+            </div>
 
+        </div>
 
+        <!--end breadcrumb-->
 
-						</div>
 
-					</div>
 
-				</div>
 
-				<!--end breadcrumb-->
+        <hr />
 
+        <div class="card">
 
+            <div class="card-body">
 
+                <div class="table-responsive">
 
-				<hr/>
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">
 
-				<div class="card">
+                        <thead>
 
-					<div class="card-body">
+                            <tr>
 
-						<div class="table-responsive">
+                                <th>Sl</th>
 
-							<table id="example" class="table table-striped table-bordered" style="width:100%">
+                                <th>Date </th>
 
-								<thead>
+                                <th>Invoice </th>
 
-			<tr>
+                                <th>Amount </th>
 
-				<th>Sl</th>
+                                <th>Payment </th>
 
-				<th>Date </th>
+                                <th>State </th>
 
-				<th>Invoice </th>
+                                <th>Action</th>
 
-				<th>Amount </th>
+                            </tr>
 
-				<th>Payment </th>
+                        </thead>
 
-				<th>State </th>
+                        <tbody>
 
-				<th>Action</th> 
+                            @foreach ($orders as $key => $item)
+                                <tr>
 
-			</tr>
+                                    <td> {{ $key + 1 }} </td>
 
-		</thead>
+                                    <td>{{ $item->order_date }}</td>
 
-		<tbody>
+                                    <td>{{ $item->invoice_no }}</td>
 
-	@foreach($orders as $key => $item)		
+                                    <td>${{ $item->amount }}</td>
 
-			<tr>
+                                    <td>{{ $item->payment_method }}</td>
 
-				<td> {{ $key+1 }} </td>
+                                    <td> <span class="badge rounded-pill bg-success"> {{ $item->status }}</span></td>
 
-				<td>{{ $item->order_date }}</td>
 
-				<td>{{ $item->invoice_no }}</td>
 
-				<td>${{ $item->amount }}</td>
 
-				<td>{{ $item->payment_method }}</td>
+                                    <td>
 
-                <td> <span class="badge rounded-pill bg-success"> {{ $item->status }}</span></td> 
+                                        <a href="{{ route('admin.order.details', $item->id) }}" class="btn btn-info"
+                                            title="Details"><i class="fa fa-eye"></i> </a>
+                                        <a href="{{ route('admin.invoice.download', $item->id) }}" class="btn btn-danger"
+                                            title="Invoice Pdf"><i class="fa fa-download"></i> </a>
 
 
 
 
-				<td>
 
-<a href="{{ route('admin.order.details',$item->id) }}" class="btn btn-info" title="Details"><i class="fa fa-eye"></i> </a>
 
+                                    </td>
 
+                                </tr>
+                            @endforeach
 
 
 
 
 
-				</td> 
 
-			</tr>
 
-			@endforeach
+                        </tbody>
 
+                        <tfoot>
 
+                            <tr>
 
+                                <th>Sl</th>
 
+                                <th>Date </th>
 
+                                <th>Invoice </th>
 
+                                <th>Amount </th>
 
-		</tbody>
+                                <th>Payment </th>
 
-		<tfoot>
+                                <th>State </th>
 
-			<tr>
+                                <th>Action</th>
 
-				<th>Sl</th>
+                            </tr>
 
-				<th>Date </th>
+                        </tfoot>
 
-				<th>Invoice </th>
+                    </table>
 
-				<th>Amount </th>
+                </div>
 
-				<th>Payment </th>
+            </div>
 
-				<th>State </th>
+        </div>
 
-				<th>Action</th> 
 
-			</tr>
 
-		</tfoot>
 
-	</table>
 
-						</div>
 
-					</div>
 
-				</div>
 
 
 
-
-
-
-
-
-
-
-			</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
+    </div>
 @endsection

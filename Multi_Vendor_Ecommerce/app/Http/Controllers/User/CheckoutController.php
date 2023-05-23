@@ -20,15 +20,21 @@ class CheckoutController extends Controller
     {
 
         $ship = ShipDistricts::where('division_id', $division_id)->orderBy('district_name', 'ASC')->get();
+
+
+
         return json_encode($ship);
     } // End Method 
 
     public function StateGetAjax($district_id)
     {
 
-        $ship = ShipState::where('district_id', $district_id)->orderBy('state_name', 'ASC')->get();
-        return json_encode($ship);
+        $ships = ShipState::where('district_id', $district_id)->orderBy('state_name', 'ASC')->get();
+
+
+        return json_encode($ships);
     } // End Method 
+
 
 
 
@@ -51,12 +57,10 @@ class CheckoutController extends Controller
         if ($request->payment_option == 'stripe') {
             return view('frontend.payment.stripe', compact('data', 'cartTotal'));
         } elseif ($request->payment_option == 'card') {
-            return 'Card Page'; 
+            return 'Card Page';
         } else {
             return view('frontend.payment.cash', compact('data', 'cartTotal'));
         }
-
-
     } // End Method 
 
 

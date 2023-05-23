@@ -293,6 +293,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/confirm/processing/{order_id}', 'ConfirmToProcess')->name('confirm-processing');
 
         Route::get('/processing/delivered/{order_id}', 'ProcessToDelivered')->name('processing-delivered');
+        Route::get('/admin/invoice/download/{order_id}' , 'AdminInvoiceDownload')->name('admin.invoice.download');
     });
 });
 
@@ -413,7 +414,6 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::controller(CheckoutController::class)->group(function () {
         Route::get('/district-get/ajax/{division_id}', 'DistrictGetAjax');
         Route::get('/state-get/ajax/{district_id}', 'StateGetAjax');
-
         Route::post('/checkout/store', 'CheckoutStore')->name('checkout.store');
     });
 
