@@ -294,6 +294,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
         Route::get('/processing/delivered/{order_id}', 'ProcessToDelivered')->name('processing-delivered');
         Route::get('/admin/invoice/download/{order_id}' , 'AdminInvoiceDownload')->name('admin.invoice.download');
+        Route::post('/return/order/{order_id}' , 'ReturnOrder')->name('return.order');
     });
 });
 
