@@ -114,19 +114,26 @@
                                                                             class="badge rounded-pill bg-info">Confirm</span>
                                                                     @elseif($order->status == 'processing')
                                                                         <span
-                                                                            class="badge rounded-pill bg-danger">Processing</span>
+                                                                            class="badge rounded-pill bg-dark">Processing</span>
                                                                     @elseif($order->status == 'deliverd')
-                                                                         <span
+                                                                        <span
                                                                             class="badge rounded-pill bg-success">Deliverd</span>
+
+                                                                        @if ($order->return_order == 1)
+                                                                            <span class="badge rounded-pill "
+                                                                                style="background:red;">Return</span>
+                                                                        @endif
                                                                     @endif
 
 
                                                                 </td>
 
 
-                                                                <td><a href="{{ url('user/order_details/'.$order->id) }}" class="btn-sm btn-success"><i
-                                                                            class="fa fa-eye"></i> View</a>
-                                                                    <a href="{{ url('user/invoice_download/'.$order->id) }}" class="btn-sm btn-danger"><i
+                                                                <td><a href="{{ url('user/order_details/' . $order->id) }}"
+                                                                        class="btn-sm btn-success"><i class="fa fa-eye"></i>
+                                                                        View</a>
+                                                                    <a href="{{ url('user/invoice_download/' . $order->id) }}"
+                                                                        class="btn-sm btn-danger"><i
                                                                             class="fa fa-download"></i> Invoice</a>
                                                                 </td>
                                                             </tr>
