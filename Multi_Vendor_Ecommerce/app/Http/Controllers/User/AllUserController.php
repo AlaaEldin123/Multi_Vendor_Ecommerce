@@ -11,6 +11,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use Carbon\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf;
+
 class AllUserController extends Controller
 {
     public function UserAccount()
@@ -55,12 +56,13 @@ class AllUserController extends Controller
     } // End Method 
 
 
-    public function ReturnOrder(Request $request,$order_id){
+    public function ReturnOrder(Request $request, $order_id)
+    {
 
         Order::findOrFail($order_id)->update([
             'return_date' => Carbon::now()->format('d F Y'),
             'return_reason' => $request->return_reason,
-            'return_order' => 1, 
+            'return_order' => 1,
         ]);
 
         $notification = array(
@@ -68,8 +70,12 @@ class AllUserController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->route('user.order.page')->with($notification); 
+        return redirect()->route('user.order.page')->with($notification);
+    } // End Method 
+    public function ReturnOrderPage()
+    {
 
-    }// End Method 
-    
+        $orders = Order::where('user_id', Auth::id())->where('return_order', '=', 1)->orderBy('id', 'DESC')->get();
+        return view('frontend.order.return_order_view', compact('orders'));
+    } // End Method 
 }
