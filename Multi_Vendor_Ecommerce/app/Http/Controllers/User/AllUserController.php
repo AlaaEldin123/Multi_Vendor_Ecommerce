@@ -78,6 +78,7 @@ class AllUserController extends Controller
     {
 
         $orders = Order::where('user_id', Auth::id())->where('return_reason', '!=', NULL)->orderBy('id', 'DESC')->get();
+      
         return view('frontend.order.return_order_view', compact('orders'));
     } // End Method 
 }

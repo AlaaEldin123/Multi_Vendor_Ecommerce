@@ -125,6 +125,7 @@ Route::middleware(['auth', 'role:vendor'])->group(function () {
     // Brand All Route 
     Route::controller(VendorOrderController::class)->group(function () {
         Route::get('/vendor/order', 'VendorOrder')->name('vendor.order');
+        Route::get('/vendor/return/order' , 'VendorReturnOrder')->name('vendor.return.order');
     });
 }); // end vendor group middleware
 
@@ -296,7 +297,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/processing/delivered/{order_id}', 'ProcessToDelivered')->name('processing-delivered');
         Route::get('/admin/invoice/download/{order_id}', 'AdminInvoiceDownload')->name('admin.invoice.download');
         Route::post('/return/order/{order_id}', 'ReturnOrder')->name('return.order');
-        Route::get('/return/order/page', 'ReturnOrderPage')->name('return.order.page');
     });
 
     // Return Order All Route 
@@ -447,5 +447,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         Route::get('/user/order_details/{order_id}', 'UserOrderDetails');
 
         Route::get('/user/invoice_download/{order_id}', 'UserOrderInvoice');
+
+        Route::get('/return/order/page', 'ReturnOrderPage')->name('return.order.page');
     });
 }); // end group middleware user
