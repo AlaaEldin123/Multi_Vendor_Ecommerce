@@ -21,6 +21,7 @@ use App\Http\Controllers\User\CompareController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\Backend\OrderController;
+use App\Http\Controllers\Backend\ReturnController;
 use App\Http\Controllers\User\StripeController;
 use App\Http\Controllers\Backend\VendorOrderController;
 use App\Http\Controllers\User\AllUserController;
@@ -293,9 +294,14 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/confirm/processing/{order_id}', 'ConfirmToProcess')->name('confirm-processing');
 
         Route::get('/processing/delivered/{order_id}', 'ProcessToDelivered')->name('processing-delivered');
-        Route::get('/admin/invoice/download/{order_id}' , 'AdminInvoiceDownload')->name('admin.invoice.download');
-        Route::post('/return/order/{order_id}' , 'ReturnOrder')->name('return.order');
-        Route::get('/return/order/page' , 'ReturnOrderPage')->name('return.order.page');
+        Route::get('/admin/invoice/download/{order_id}', 'AdminInvoiceDownload')->name('admin.invoice.download');
+        Route::post('/return/order/{order_id}', 'ReturnOrder')->name('return.order');
+        Route::get('/return/order/page', 'ReturnOrderPage')->name('return.order.page');
+    });
+
+    // Return Order All Route 
+    Route::controller(ReturnController::class)->group(function () {
+        Route::get('/return/request', 'ReturnRequest')->name('return.request');
     });
 });
 
