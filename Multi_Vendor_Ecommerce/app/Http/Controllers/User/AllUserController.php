@@ -72,6 +72,8 @@ class AllUserController extends Controller
 
         return redirect()->route('user.order.page')->with($notification);
     } // End Method 
+
+    
     public function ReturnOrderPage()
     {
 
