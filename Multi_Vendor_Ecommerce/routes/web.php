@@ -122,10 +122,11 @@ Route::middleware(['auth', 'role:vendor'])->group(function () {
         Route::get('/vendor/delete/product/{id}', 'VendorProductDelete')->name('vendor.delete.product');
     });
 
-    // Brand All Route 
+    // Vendor Order All Route 
     Route::controller(VendorOrderController::class)->group(function () {
         Route::get('/vendor/order', 'VendorOrder')->name('vendor.order');
         Route::get('/vendor/return/order' , 'VendorReturnOrder')->name('vendor.return.order');
+        Route::get('/vendor/complete/return/order' , 'VendorCompleteReturnOrder')->name('vendor.complete.return.order');
     });
 }); // end vendor group middleware
 
