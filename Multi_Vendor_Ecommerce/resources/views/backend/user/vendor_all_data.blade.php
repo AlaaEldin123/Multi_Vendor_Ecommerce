@@ -57,7 +57,7 @@
                                             id="delete">Delete</a>
 
                                     </td>
-                                </tr>
+                                   </tr>
                             @endforeach
 
 
