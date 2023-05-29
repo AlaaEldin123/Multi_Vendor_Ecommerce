@@ -24,6 +24,7 @@ use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ReturnController;
 use App\Http\Controllers\User\StripeController;
 use App\Http\Controllers\Backend\VendorOrderController;
+use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\User\AllUserController;
 /*
 |--------------------------------------------------------------------------
@@ -307,8 +308,13 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/return/request/approved/{order_id}', 'ReturnRequestApproved')->name('return.request.approved');
         Route::get('/complete/return/request', 'CompleteReturnRequest')->name('complete.return.request');
     });
-});
 
+    // Report All Route 
+    Route::controller(ReportController::class)->group(function () {
+
+        Route::get('/report/view', 'ReportView')->name('report.view');
+    });
+});
 
 
 

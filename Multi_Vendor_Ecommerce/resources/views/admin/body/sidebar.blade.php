@@ -40,7 +40,72 @@
         </li>
 
 
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Slider Manage</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('all.slider') }}"><i class="bx bx-right-arrow-alt"></i>All Slider</a>
+                </li>
+                <li> <a href="{{ route('add.slider') }}"><i class="bx bx-right-arrow-alt"></i>Add Slider</a>
+                </li>
 
+            </ul>
+        </li>
+
+
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Banner Manage</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('all.banner') }}"><i class="bx bx-right-arrow-alt"></i>All Banner</a>
+                </li>
+                <li> <a href="{{ route('add.banner') }}"><i class="bx bx-right-arrow-alt"></i>Add Banner</a>
+                </li>
+
+            </ul>
+        </li>
+
+
+
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Coupon System</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('all.coupon') }}"><i class="bx bx-right-arrow-alt"></i>All Coupon</a>
+                </li>
+                <li> <a href="{{ route('add.coupon') }}"><i class="bx bx-right-arrow-alt"></i>Add Coupon</a>
+                </li>
+
+            </ul>
+        </li>
+
+
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Shipping Area </div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('all.division') }}"><i class="bx bx-right-arrow-alt"></i>All Division</a>
+                </li>
+                <li> <a href="{{ route('all.district') }}"><i class="bx bx-right-arrow-alt"></i>All District</a>
+                </li>
+
+                <li> <a href="{{ route('all.state') }}"><i class="bx bx-right-arrow-alt"></i>All State</a>
+                </li>
+
+            </ul>
+        </li>
 
 
         <li>
@@ -58,7 +123,42 @@
             </ul>
         </li>
 
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Reports Manage</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('report.view') }}"><i class="bx bx-right-arrow-alt"></i>Report View</a>
+                </li>
+            </ul>
+        </li>
 
+
+
+
+
+
+        @if ($status === 'active')
+            <li>
+                <a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><i class='bx bx-home-circle'></i>
+                    </div>
+                    <div class="menu-title">Product Manage </div>
+                </a>
+                <ul>
+                    <li> <a href="{{ route('all.product') }}"><i class="bx bx-right-arrow-alt"></i>All
+                            Product</a>
+                    </li>
+            </li>
+            <li> <a href="{{ route('add.product') }}"><i class="bx bx-right-arrow-alt"></i>Add Product</a>
+            </li>
+
+    </ul>   
+</li>
+
+@else
 
         <li>
             <a href="javascript:;" class="has-arrow">
@@ -130,97 +230,9 @@
                 <li> <a href="{{ route('complete.return.request') }}"><i class="bx bx-right-arrow-alt"></i>Complete
                         Request</a>
                 </li>
-            </ul>
-        </li>
 
-
-
-
-
-
-        @if ($status === 'active')
-            <li>
-                <a href="javascript:;" class="has-arrow">
-                    <div class="parent-icon"><i class='bx bx-home-circle'></i>
-                    </div>
-                    <div class="menu-title">Product Manage </div>
-                </a>
-                <ul>
-                    <li> <a href="{{ route('all.product') }}"><i class="bx bx-right-arrow-alt"></i>All Product</a>
-                    </li>
-            </li>
-            <li> <a href="{{ route('add.product') }}"><i class="bx bx-right-arrow-alt"></i>Add Product</a> </li>
-
-    </ul>
-    </li>
-    <li>
-        <a href="javascript:;" class="has-arrow">
-            <div class="parent-icon"><i class="bx bx-category"></i>
-            </div>
-            <div class="menu-title">Slider Manage</div>
-        </a>
-        <ul>
-            <li> <a href="{{ route('all.slider') }}"><i class="bx bx-right-arrow-alt"></i>All Slider</a>
-            </li>
-            <li> <a href="{{ route('add.slider') }}"><i class="bx bx-right-arrow-alt"></i>Add Slider</a>
-            </li>
-
-        </ul>
-    </li>
-
-
-    <li>
-        <a href="javascript:;" class="has-arrow">
-            <div class="parent-icon"><i class="bx bx-category"></i>
-            </div>
-            <div class="menu-title">Banner Manage</div>
-        </a>
-        <ul>
-            <li> <a href="{{ route('all.banner') }}"><i class="bx bx-right-arrow-alt"></i>All Banner</a>
-            </li>
-            <li> <a href="{{ route('add.banner') }}"><i class="bx bx-right-arrow-alt"></i>Add Banner</a>
-            </li>
-
-        </ul>
-    </li>
-
-
-
-    <li>
-        <a href="javascript:;" class="has-arrow">
-            <div class="parent-icon"><i class="bx bx-category"></i>
-            </div>
-            <div class="menu-title">Coupon System</div>
-        </a>
-        <ul>
-            <li> <a href="{{ route('all.coupon') }}"><i class="bx bx-right-arrow-alt"></i>All Coupon</a>
-            </li>
-            <li> <a href="{{ route('add.coupon') }}"><i class="bx bx-right-arrow-alt"></i>Add Coupon</a>
-            </li>
-
-        </ul>
-    </li>
-
-
-    <li>
-        <a href="javascript:;" class="has-arrow">
-            <div class="parent-icon"><i class="bx bx-category"></i>
-            </div>
-            <div class="menu-title">Shipping Area </div>
-        </a>
-        <ul>
-            <li> <a href="{{ route('all.division') }}"><i class="bx bx-right-arrow-alt"></i>All Division</a>
-            </li>
-            <li> <a href="{{ route('all.district') }}"><i class="bx bx-right-arrow-alt"></i>All District</a>
-            </li>
-
-            <li> <a href="{{ route('all.state') }}"><i class="bx bx-right-arrow-alt"></i>All State</a>
-            </li>
-
-        </ul>
-    </li>
-@else
-    @endif
+          
+        @endif
 
 
 
@@ -236,5 +248,5 @@
 
 
 
-    <!--end navigation-->
+        <!--end navigation-->
 </div>
