@@ -85,8 +85,9 @@
                                             <span class="post-on">{{ $post->created_at->format('M d Y') }}</span>
 
                                         </div>
-                                        <a href="blog-post-right.html" class="text-brand font-heading font-weight-bold">Read
-                                            more <i class="fi-rs-arrow-right"></i></a>
+                                        <a href="{{ url('post/details/' . $post->id . '/' . $post->post_slug) }}"
+                                            class="text-brand font-heading font-weight-bold">Read more <i
+                                                class="fi-rs-arrow-right"></i></a>
                                     </div>
                                 </div>
                             </article>
@@ -132,8 +133,9 @@
                                     @endphp
 
                                     <li>
-                                        <a href="shop-grid-right.html"> <img
-                                                src="{{ asset('frontend/assets/imgs/theme/icons/category-1.svg') }}"
+                                        <a
+                                            href="{{ url('post/category/' . $category->id . '/' . $category->blog_category_slug) }}">
+                                            <img src="{{ asset('frontend/assets/imgs/theme/icons/category-1.svg') }}"
                                                 alt="" />{{ $category->blog_category_name }}</a><span
                                             class="count">{{ count($posts) }}</span>
                                     </li>

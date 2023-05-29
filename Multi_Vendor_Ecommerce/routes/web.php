@@ -522,5 +522,6 @@ Route::middleware(['auth', 'role:user'])->group(function () {
  Route::controller(BlogController::class)->group(function () {
 
     Route::get('/blog', 'AllBlog')->name('home.blog');
-    Route::get('/post/details/{id}/{slug}' , 'BlogDetails');
+    Route::get('/post/details/{id}/{slug}' , 'BlogDetails'); 
+    Route::get('/post/category/{id}/{slug}' , 'BlogPostCategory');
 });
