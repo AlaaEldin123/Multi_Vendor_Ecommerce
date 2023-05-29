@@ -492,13 +492,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         Route::post('/checkout/store', 'CheckoutStore')->name('checkout.store');
     });
 
-// Frontend Blog Post All Route 
-Route::controller(BlogController::class)->group(function(){
-
-    Route::get('/blog' , 'AllBlog')->name('home.blog');  
    
-   
-   });
 
     // Compare All Route 
     Route::controller(CompareController::class)->group(function () {
@@ -522,3 +516,11 @@ Route::controller(BlogController::class)->group(function(){
         Route::get('/return/order/page', 'ReturnOrderPage')->name('return.order.page');
     });
 }); // end group middleware user
+
+
+ // Frontend Blog Post All Route 
+ Route::controller(BlogController::class)->group(function () {
+
+    Route::get('/blog', 'AllBlog')->name('home.blog');
+    Route::get('/post/details/{id}/{slug}' , 'BlogDetails');
+});
