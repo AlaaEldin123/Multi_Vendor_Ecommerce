@@ -50,13 +50,14 @@
                                     <td> {{ $item->phone }} </td>
 
                                     <td>
-                                        @if($item->UserOnline())
-                                    <span class="badge badge-pill bg-success">Active Now </span>
+                                        @if ($item->UserOnline())
+                                            <span class="badge badge-pill bg-success">Active Now </span>
                                         @else
-                               <span class="badge badge-pill bg-danger"> {{ Carbon\Carbon::parse($item->last_seen)->diffForHumans() }} </span>
+                                            <span class="badge badge-pill bg-danger">
+                                                {{ Carbon\Carbon::parse($item->last_seen)->diffForHumans() }} </span>
                                         @endif
-                               
-                                         </td>
+
+                                    </td>
                                     <td>
                                         <a href="{{ route('edit.subcategory', $item->id) }}" class="btn btn-info">Edit</a>
                                         <a href="{{ route('delete.subcategory', $item->id) }}" class="btn btn-danger"
