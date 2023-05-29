@@ -31,35 +31,34 @@
                                 <th>Sl</th>
                                 <th>Post Category </th>
                                 <th>Post Image </th>
-                                <th>Post Title </th>
-                                <th>Action</th>
+                                <th>Post Title </th> 
+                                <th>Action</th> 
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($blogpost as $key => $item)
-                                <tr>
-                                    <td> {{ $key + 1 }} </td>
-                                    <td>{{ $item['blogcategory']['blog_category_name'] }}</td>
-                                    <td> <img src="{{ asset($item->post_image) }}" style="width: 70px; height:40px;"> </td>
-                                    <td>{{ $item->post_title }}</td>
-                                    <td>
-                                        <a href="{{ route('edit.category', $item->id) }}" class="btn btn-info">Edit</a>
-                                        <a href="{{ route('delete.category', $item->id) }}" class="btn btn-danger"
-                                            id="delete">Delete</a>
-
-                                    </td>
-                                </tr>
-                            @endforeach
-
-
-                        </tbody>
+                            @foreach($blogpost as $key => $item)		
+                                    <tr>
+                                        <td> {{ $key+1 }} </td>
+                                        <td>{{ $item['blogcategory']['blog_category_name'] }}</td>
+                                        <td> <img src="{{ asset($item->post_image) }}" style="width: 70px; height:40px;" >  </td>
+                                        <td>{{ $item->post_title }}</td>
+                                        <td>
+                        <a href="{{ route('edit.blog.post',$item->id) }}" class="btn btn-info">Edit</a>
+                        <a href="{{ route('delete.blog.post',$item->id) }}" class="btn btn-danger" id="delete" >Delete</a>
+                        
+                                        </td> 
+                                    </tr>
+                                    @endforeach
+                                     
+                                 
+                                </tbody>
                         <tfoot>
                             <tr>
                                 <th>Sl</th>
                                 <th>Post Category </th>
                                 <th>Post Image </th>
-                                <th>Post Title </th>
-                                <th>Action</th>
+                                <th>Post Title </th> 
+                                <th>Action</th> 
                             </tr>
                         </tfoot>
                     </table>
