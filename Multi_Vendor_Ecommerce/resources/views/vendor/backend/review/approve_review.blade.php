@@ -27,6 +27,7 @@
                 <div class="table-responsive">
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead>
+
                             <tr>
                                 <th>Sl</th>
                                 <th>Comment </th>
@@ -34,16 +35,21 @@
                                 <th>Product </th>
                                 <th>Rating </th>
                                 <th>Status </th>
-
                             </tr>
+
                         </thead>
                         <tbody>
                             @foreach ($review as $key => $item)
                                 <tr>
                                     <td> {{ $key + 1 }} </td>
-                                    <td>{{ Str::limit($item->comment, 25) }}</td>
+
+                                    <td> <img src="{{ asset($item['product']['product_thambnail']) }}"
+                                            style="width: 40px; height:40px;"></td>
+
                                     <td>{{ $item['user']['name'] }}</td>
                                     <td>{{ $item['product']['product_name'] }}</td>
+                                    <td>{{ $item['user']['name'] }}</td>
+                                    <td>{{ Str::limit($item->comment, 25) }}</td>
                                     <td>
                                         @if ($item->rating == null)
                                             <i class="bx bxs-star text-secondary"></i>
@@ -100,9 +106,11 @@
                         <tfoot>
                             <tr>
                                 <th>Sl</th>
-                                <th>Comment </th>
+                                <th>Image </th>
                                 <th>User </th>
                                 <th>Product </th>
+                                <th>User </th>
+                                <th>Comment </th>
                                 <th>Rating </th>
                                 <th>Status </th>
 

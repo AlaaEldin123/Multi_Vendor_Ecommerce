@@ -56,16 +56,17 @@
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
 
                         <thead>
-
                             <tr>
 
                                 <th>Sl</th>
 
-                                <th>Comment </th>
+                                <th>Image </th>
 
                                 <th>User </th>
 
                                 <th>Product </th>
+                                <th>User </th>
+                                <th>Comment </th>
 
                                 <th>Rating </th>
 
@@ -83,8 +84,13 @@
                                 <tr>
 
                                     <td> {{ $key + 1 }} </td>
+                                    <td> <img src="{{ asset($item['product']['product_thambnail']) }}"
+                                            style="width: 40px; height:40px;"></td>
+                                    <td>{{ $item['product']['product_name'] }}</td>
+                                    <td>{{ $item['user']['name'] }}</td>
+                                    <td>{{ Str::limit($item->comment, 25) }}</td>
 
-                                    <td>{{ Str::limit($item->comment, 25); }}</td>
+                                    <td>{{ Str::limit($item->comment, 25) }}</td>
 
                                     <td>{{ $item['user']['name'] }}</td>
 
@@ -171,7 +177,8 @@
 
                                     <td>
 
-                                        <a href="{{ route('review.approve', $item->id) }}" class="btn btn-danger">Approve</a>   
+                                        <a href="{{ route('review.approve', $item->id) }}"
+                                            class="btn btn-danger">Approve</a>
 
 
 
@@ -197,11 +204,13 @@
 
                                 <th>Sl</th>
 
-                                <th>Comment </th>
+                                <th>Image </th>
 
                                 <th>User </th>
 
                                 <th>Product </th>
+                                <th>User </th>
+                                <th>Comment </th>
 
                                 <th>Rating </th>
 
