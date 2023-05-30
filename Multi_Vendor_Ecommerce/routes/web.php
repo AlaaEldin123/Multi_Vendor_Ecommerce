@@ -28,7 +28,7 @@ use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\User\AllUserController;
 use App\Http\Controllers\Backend\ActiveUserController;
 use App\Http\Controllers\Backend\BlogController;
-
+use App\Http\Controllers\User\ReviewController;
 
 
 
@@ -446,7 +446,12 @@ Route::controller(CartController::class)->group(function () {
 
 
 
+// Frontend Blog Post All Route 
+Route::controller(ReviewController::class)->group(function(){
 
+    Route::post('/store/review' , 'StoreReview')->name('store.review'); 
+   
+   });
 
 
 
