@@ -4,12 +4,14 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Review; 
+use App\Models\Review;
 use Carbon\Carbon;
 use Auth;
+
 class ReviewController extends Controller
 {
-    public function StoreReview(Request $request){
+    public function StoreReview(Request $request)
+    {
 
         $product = $request->product_id;
         $vendor = $request->hvendor_id;
@@ -34,8 +36,15 @@ class ReviewController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
+    } // End Method 
 
+
+    public function PendingReview()
+    {
+
+        $review = Review::where('status', 0)->orderBy('id', 'DESC')->get();
+        return view('backend.review.pending_review', compact('review'));
     } // End Method 
 
 }
