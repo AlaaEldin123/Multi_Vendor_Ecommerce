@@ -146,7 +146,7 @@
                                             <i class="bx bxs-star text-warning"></i>
 
                                             <i class="bx bxs-star text-warning"></i>
-                                        
+
                                             <i class="bx bxs-star text-warning"></i>
 
                                             <i class="bx bxs-star text-warning"></i>
@@ -171,8 +171,7 @@
 
                                     <td>
 
-                                        <a href="{{ route('edit.category', $item->id) }}" class="btn btn-danger">Approve</a>
-
+                                        <a href="{{ route('review.approve', $item->id) }}" class="btn btn-danger">Approve</a>
 
 
 

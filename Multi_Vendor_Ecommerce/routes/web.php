@@ -457,6 +457,7 @@ Route::controller(ReviewController::class)->group(function () {
 Route::controller(ReviewController::class)->group(function () {
 
     Route::get('/pending/review', 'PendingReview')->name('pending.review');
+    Route::get('/review/approve/{id}', 'ReviewApprove')->name('review.approve');
 });
 
 
