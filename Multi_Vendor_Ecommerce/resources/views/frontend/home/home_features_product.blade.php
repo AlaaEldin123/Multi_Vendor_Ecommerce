@@ -42,12 +42,13 @@
                                                 </a>
                                             </div>
                                             <div class="product-action-1">
-                                                <a aria-label="Add To Wishlist" class="action-btn" id="{{ $product->id }}"
-                                                    onclick="addToWishList(this.id)"><i class="fi-rs-heart"></i></a>
-        
+                                                <a aria-label="Add To Wishlist" class="action-btn"
+                                                    id="{{ $product->id }}" onclick="addToWishList(this.id)"><i
+                                                        class="fi-rs-heart"></i></a>
+
                                                 <a aria-label="Compare" class="action-btn" id="{{ $product->id }}"
                                                     onclick="addToCompare(this.id)"><i class="fi-rs-shuffle"></i></a>
-        
+
                                                 <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal"
                                                     data-bs-target="#quickViewModal" id="{{ $product->id }}"
                                                     onclick="productView(this.id)"><i class="fi-rs-eye"></i></a>
@@ -77,6 +78,10 @@
                                             </h2>
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 80%"></div>
+                                            
+
+
+                                                
                                             </div>
 
                                             @if ($product->discount_price == null)

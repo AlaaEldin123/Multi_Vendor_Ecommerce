@@ -30,13 +30,15 @@
 
                             <tr>
                                 <th>Sl</th>
-                                <th>Comment </th>
+                                <th>Image </th>
                                 <th>User </th>
                                 <th>Product </th>
+                                <th>User </th>
+                                <th>Comment </th>
                                 <th>Rating </th>
                                 <th>Status </th>
-                            </tr>
 
+                            </tr>
                         </thead>
                         <tbody>
                             @foreach ($review as $key => $item)

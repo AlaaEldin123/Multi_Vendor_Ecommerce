@@ -79,7 +79,7 @@
                                     </div>
                                     <h2><a href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}">
                                             {{ $product->product_name }} </a></h2>
-                                    {{-- @php
+                                    @php
                                         
                                         $reviewcount = App\Models\Review::where('product_id', $product->id)
                                             ->where('status', 1)
@@ -89,9 +89,9 @@
                                         $avarage = App\Models\Review::where('product_id', $product->id)
                                             ->where('status', 1)
                                             ->avg('rating');
-                                    @endphp --}}
+                                    @endphp 
 
-                                    {{-- <div class="product-rate-cover">
+                                     <div class="product-rate-cover">
                                         <div class="product-rate d-inline-block">
 
                                             @if ($avarage == 0)
@@ -108,7 +108,7 @@
                                             @endif
                                         </div>
                                         <span class="font-small ml-5 text-muted"> ({{ count($reviewcount) }})</span>
-                                    </div> --}}
+                                    </div>
 
 
 
@@ -226,7 +226,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small ml-5 text-muted"> 2</span>
                                         </div>
                                         <div>
                                             @if ($product->vendor_id == null)

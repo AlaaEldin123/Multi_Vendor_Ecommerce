@@ -10,26 +10,13 @@
 
     <!--End banners-->
 
-
     @include('frontend.home.home_new_product')
-
 
     <!--Products Tabs-->
 
     @include('frontend.home.home_features_product')
 
-
-
-
     <!--End Best Sales-->
-
-
-
-
-
-
-
-
 
     <!-- Fashion Category -->
 
@@ -90,14 +77,39 @@
                                         <div class="product-category">
                                             <a href="shop-grid-right.html">{{ $product['category']['category_name'] }}</a>
                                         </div>
-                                        <h2><a
+                                        <h2>
+                                            <a
                                                 href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}">
-                                                {{ $product->product_name }} </a></h2>
+                                                {{ $product->product_name }} </a>
+                                        </h2>
+                                        @php
+                                            $reviewcount = App\Models\Review::where('product_id', $product->id)
+                                                ->where('status', 1)
+                                                ->latest()
+                                                ->get();
+                                            $avarage = App\Models\Review::where('product_id', $product->id)
+                                                ->where('status', 1)
+                                                ->avg('rating');
+                                        @endphp
                                         <div class="product-rate-cover">
+
                                             <div class="product-rate d-inline-block">
-                                                <div class="product-rating" style="width: 90%"></div>
+                                                @if ($avarage == 0)
+                                                @elseif($avarage == 1 || $avarage < 2)
+                                                    <div class="product-rating" style="width: 20%"></div>
+                                                @elseif($avarage == 2 || $avarage < 3)
+                                                    <div class="product-rating" style="width: 40%"></div>
+                                                @elseif($avarage == 3 || $avarage < 4)
+                                                    <div class="product-rating" style="width: 60%"></div>
+                                                @elseif($avarage == 4 || $avarage < 5)
+                                                    <div class="product-rating" style="width: 80%"></div>
+                                                @elseif($avarage == 5 || $avarage < 5)
+                                                    <div class="product-rating" style="width: 100%"></div>
+                                                @endif
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small ml-5 text-muted">
+                                                ({{ count($reviewcount) }})
+                                            </span>
                                         </div>
                                         <div>
                                             @if ($product->vendor_id == null)
@@ -217,12 +229,36 @@
                                         <h2><a
                                                 href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}">
                                                 {{ $product->product_name }} </a></h2>
+                                        @php
+                                            $reviewcount = App\Models\Review::where('product_id', $product->id)
+                                                ->where('status', 1)
+                                                ->latest()
+                                                ->get();
+                                            $avarage = App\Models\Review::where('product_id', $product->id)
+                                                ->where('status', 1)
+                                                ->avg('rating');
+                                        @endphp
                                         <div class="product-rate-cover">
+
                                             <div class="product-rate d-inline-block">
-                                                <div class="product-rating" style="width: 90%"></div>
+                                                @if ($avarage == 0)
+                                                @elseif($avarage == 1 || $avarage < 2)
+                                                    <div class="product-rating" style="width: 20%"></div>
+                                                @elseif($avarage == 2 || $avarage < 3)
+                                                    <div class="product-rating" style="width: 40%"></div>
+                                                @elseif($avarage == 3 || $avarage < 4)
+                                                    <div class="product-rating" style="width: 60%"></div>
+                                                @elseif($avarage == 4 || $avarage < 5)
+                                                    <div class="product-rating" style="width: 80%"></div>
+                                                @elseif($avarage == 5 || $avarage < 5)
+                                                    <div class="product-rating" style="width: 100%"></div>
+                                                @endif
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small ml-5 text-muted">
+                                                ({{ count($reviewcount) }})
+                                            </span>
                                         </div>
+
                                         <div>
                                             @if ($product->vendor_id == null)
                                                 <span class="font-small text-muted">By <a
@@ -310,9 +346,11 @@
                                             </a>
                                         </div>
                                         <div class="product-action-1">
-                                               <a aria-label="Add To Wishlist" class="action-btn" id="{{ $product->id }}" onclick="addToWishList(this.id)"  ><i class="fi-rs-heart"></i></a>
+                                            <a aria-label="Add To Wishlist" class="action-btn" id="{{ $product->id }}"
+                                                onclick="addToWishList(this.id)"><i class="fi-rs-heart"></i></a>
 
-   <a aria-label="Compare" class="action-btn"  id="{{ $product->id }}" onclick="addToCompare(this.id)"><i class="fi-rs-shuffle"></i></a>
+                                            <a aria-label="Compare" class="action-btn" id="{{ $product->id }}"
+                                                onclick="addToCompare(this.id)"><i class="fi-rs-shuffle"></i></a>
                                             <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal"
                                                 data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
                                         </div>
@@ -341,12 +379,36 @@
                                         <h2><a
                                                 href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}">
                                                 {{ $product->product_name }} </a></h2>
+                                                @php
+                                            $reviewcount = App\Models\Review::where('product_id', $product->id)
+                                                ->where('status', 1)
+                                                ->latest()
+                                                ->get();
+                                            $avarage = App\Models\Review::where('product_id', $product->id)
+                                                ->where('status', 1)
+                                                ->avg('rating');
+                                        @endphp
                                         <div class="product-rate-cover">
+
                                             <div class="product-rate d-inline-block">
-                                                <div class="product-rating" style="width: 90%"></div>
+                                                @if ($avarage == 0)
+                                                @elseif($avarage == 1 || $avarage < 2)
+                                                    <div class="product-rating" style="width: 20%"></div>
+                                                @elseif($avarage == 2 || $avarage < 3)
+                                                    <div class="product-rating" style="width: 40%"></div>
+                                                @elseif($avarage == 3 || $avarage < 4)
+                                                    <div class="product-rating" style="width: 60%"></div>
+                                                @elseif($avarage == 4 || $avarage < 5)
+                                                    <div class="product-rating" style="width: 80%"></div>
+                                                @elseif($avarage == 5 || $avarage < 5)
+                                                    <div class="product-rating" style="width: 100%"></div>
+                                                @endif
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small ml-5 text-muted">
+                                                ({{ count($reviewcount) }})
+                                            </span>
                                         </div>
+
                                         <div>
                                             @if ($product->vendor_id == null)
                                                 <span class="font-small text-muted">By <a
@@ -397,25 +459,6 @@
 
     </section>
     <!--End Mobile Category -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     <section class="section-padding mb-30">
         <div class="container">
@@ -516,11 +559,34 @@
                                             href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}">
                                             {{ $item->product_name }} </a>
                                     </h6>
+                                    @php
+                                            $reviewcount = App\Models\Review::where('product_id', $product->id)
+                                                ->where('status', 1)
+                                                ->latest()
+                                                ->get();
+                                            $avarage = App\Models\Review::where('product_id', $product->id)
+                                                ->where('status', 1)
+                                                ->avg('rating');
+                                        @endphp
                                     <div class="product-rate-cover">
+
                                         <div class="product-rate d-inline-block">
-                                            <div class="product-rating" style="width: 90%"></div>
+                                            @if ($avarage == 0)
+                                            @elseif($avarage == 1 || $avarage < 2)
+                                                <div class="product-rating" style="width: 20%"></div>
+                                            @elseif($avarage == 2 || $avarage < 3)
+                                                <div class="product-rating" style="width: 40%"></div>
+                                            @elseif($avarage == 3 || $avarage < 4)
+                                                <div class="product-rating" style="width: 60%"></div>
+                                            @elseif($avarage == 4 || $avarage < 5)
+                                                <div class="product-rating" style="width: 80%"></div>
+                                            @elseif($avarage == 5 || $avarage < 5)
+                                                <div class="product-rating" style="width: 100%"></div>
+                                            @endif
                                         </div>
-                                        <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                        <span class="font-small ml-5 text-muted">
+                                            ({{ count($reviewcount) }})
+                                        </span>
                                     </div>
                                     @if ($item->discount_price == null)
                                         <div class="product-price">
@@ -558,11 +624,34 @@
                                             href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}">
                                             {{ $item->product_name }} </a>
                                     </h6>
+                                    @php
+                                            $reviewcount = App\Models\Review::where('product_id', $product->id)
+                                                ->where('status', 1)
+                                                ->latest()
+                                                ->get();
+                                            $avarage = App\Models\Review::where('product_id', $product->id)
+                                                ->where('status', 1)
+                                                ->avg('rating');
+                                        @endphp
                                     <div class="product-rate-cover">
+
                                         <div class="product-rate d-inline-block">
-                                            <div class="product-rating" style="width: 90%"></div>
+                                            @if ($avarage == 0)
+                                            @elseif($avarage == 1 || $avarage < 2)
+                                                <div class="product-rating" style="width: 20%"></div>
+                                            @elseif($avarage == 2 || $avarage < 3)
+                                                <div class="product-rating" style="width: 40%"></div>
+                                            @elseif($avarage == 3 || $avarage < 4)
+                                                <div class="product-rating" style="width: 60%"></div>
+                                            @elseif($avarage == 4 || $avarage < 5)
+                                                <div class="product-rating" style="width: 80%"></div>
+                                            @elseif($avarage == 5 || $avarage < 5)
+                                                <div class="product-rating" style="width: 100%"></div>
+                                            @endif
                                         </div>
-                                        <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                        <span class="font-small ml-5 text-muted">
+                                            ({{ count($reviewcount) }})
+                                        </span>
                                     </div>
                                     @if ($item->discount_price == null)
                                         <div class="product-price">
