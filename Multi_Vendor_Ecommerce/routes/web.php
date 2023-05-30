@@ -110,7 +110,10 @@ Route::middleware(['auth', 'role:vendor'])->group(function () {
 
     Route::post('/vendor/update/password', [VendorController::class, 'VendorUpdatePassword'])->name('vendor.update.password');
 
+    Route::controller(ReviewController::class)->group(function () {
 
+        Route::get('/vendor/all/review', 'VendorAllReview')->name('vendor.all.review');
+    });
 
 
     // Vendor Add Product All Route 
