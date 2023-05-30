@@ -447,11 +447,10 @@ Route::controller(CartController::class)->group(function () {
 
 
 // Frontend Blog Post All Route 
-Route::controller(ReviewController::class)->group(function(){
+Route::controller(ReviewController::class)->group(function () {
 
-    Route::post('/store/review' , 'StoreReview')->name('store.review'); 
-   
-   });
+    Route::post('/store/review', 'StoreReview')->name('store.review');
+});
 
 
 
@@ -497,7 +496,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         Route::post('/checkout/store', 'CheckoutStore')->name('checkout.store');
     });
 
-   
+
 
     // Compare All Route 
     Route::controller(CompareController::class)->group(function () {
@@ -523,10 +522,10 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 }); // end group middleware user
 
 
- // Frontend Blog Post All Route 
- Route::controller(BlogController::class)->group(function () {
+// Frontend Blog Post All Route 
+Route::controller(BlogController::class)->group(function () {
 
     Route::get('/blog', 'AllBlog')->name('home.blog');
-    Route::get('/post/details/{id}/{slug}' , 'BlogDetails'); 
-    Route::get('/post/category/{id}/{slug}' , 'BlogPostCategory');
+    Route::get('/post/details/{id}/{slug}', 'BlogDetails');
+    Route::get('/post/category/{id}/{slug}', 'BlogPostCategory');
 });
