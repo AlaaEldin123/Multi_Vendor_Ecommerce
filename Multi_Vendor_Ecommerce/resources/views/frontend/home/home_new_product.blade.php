@@ -35,7 +35,8 @@
                                 data-wow-delay=".1s">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
-                                        <a href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}">
+                                        <a
+                                            href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}">
                                             <img class="default-img" src="{{ asset($product->product_thambnail) }}"
                                                 alt="" />
 
@@ -77,7 +78,8 @@
                                     <div class="product-category">
                                         <a href="shop-grid-right.html">{{ $product['category']['category_name'] }}</a>
                                     </div>
-                                    <h2><a href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}">
+                                    <h2><a
+                                            href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}">
                                             {{ $product->product_name }} </a></h2>
                                     @php
                                         
@@ -89,9 +91,9 @@
                                         $avarage = App\Models\Review::where('product_id', $product->id)
                                             ->where('status', 1)
                                             ->avg('rating');
-                                    @endphp 
+                                    @endphp
 
-                                     <div class="product-rate-cover">
+                                    <div class="product-rate-cover">
                                         <div class="product-rate d-inline-block">
 
                                             @if ($avarage == 0)
@@ -180,14 +182,14 @@
                                             <a
                                                 href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}">
                                                 <img class="default-img"
-                                                    src="{{ asset($product->product_thambnail) }}"
-                                                    alt="" />
+                                                    src="{{ asset($product->product_thambnail) }}" alt="" />
 
                                             </a>
                                         </div>
                                         <div class="product-action-1">
                                             <a aria-label="Add To Wishlist" class="action-btn"
-                                            onclick="addToWishList(this.id)"   id="{{ $product->id }}"><i class="fi-rs-heart"></i></a>
+                                                onclick="addToWishList(this.id)" id="{{ $product->id }}"><i
+                                                    class="fi-rs-heart"></i></a>
                                             <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i
                                                     class="fi-rs-shuffle"></i></a>
 
@@ -222,11 +224,33 @@
                                         <h2><a
                                                 href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}">
                                                 {{ $product->product_name }} </a></h2>
+                                        @php
+                                            $reviewcount = App\Models\Review::where('product_id', $product->id)
+                                                ->where('status', 1)
+                                                ->latest()
+                                                ->get();
+                                            $avarage = App\Models\Review::where('product_id', $product->id)
+                                                ->where('status', 1)
+                                                ->avg('rating');
+                                        @endphp
                                         <div class="product-rate-cover">
                                             <div class="product-rate d-inline-block">
-                                                <div class="product-rating" style="width: 90%"></div>
+                                                @if ($avarage == 0)
+                                                @elseif($avarage == 1 || $avarage < 2)
+                                                    <div class="product-rating" style="width: 20%"></div>
+                                                @elseif($avarage == 2 || $avarage < 3)
+                                                    <div class="product-rating" style="width: 40%"></div>
+                                                @elseif($avarage == 3 || $avarage < 4)
+                                                    <div class="product-rating" style="width: 60%"></div>
+                                                @elseif($avarage == 4 || $avarage < 5)
+                                                    <div class="product-rating" style="width: 80%"></div>
+                                                @elseif($avarage == 5 || $avarage < 5)
+                                                    <div class="product-rating" style="width: 100%"></div>
+                                                @endif
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> 2</span>
+                                            <span class="font-small ml-5 text-muted">
+                                                ({{ count($reviewcount) }})
+                                            </span>
                                         </div>
                                         <div>
                                             @if ($product->vendor_id == null)

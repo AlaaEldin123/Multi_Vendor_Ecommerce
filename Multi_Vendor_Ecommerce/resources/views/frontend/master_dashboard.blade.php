@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Alaa Eldin Online Store Demo</title>
+    <title> @yield('title')</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -92,7 +92,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
 
-  
+
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -197,7 +197,7 @@
         function addToCart() {
             var product_name = $('#pname').text();
             var id = $('#product_id').val();
-            
+
             var vendor = $('#pvendor_id').text();
             var color = $('#color option:selected').text();
             var size = $('#size option:selected').text();
@@ -210,7 +210,7 @@
                     size: size,
                     quantity: quantity,
                     product_name: product_name,
-                    vendor : vendor,
+                    vendor: vendor,
 
                 },
                 url: "/cart/data/store/" + id,
@@ -342,7 +342,7 @@
                     size: size,
                     quantity: quantity,
                     product_name: product_name,
-                    vendor:vendor,
+                    vendor: vendor,
                 },
                 url: "/dcart/data/store/" + id,
                 success: function(data) {
@@ -432,11 +432,33 @@
                         <td class="image product-thumbnail pt-40"><img src="/${value.product.product_thambnail}" alt="#" /></td>
                         <td class="product-des product-name">
                             <h6><a class="product-name mb-10" href="shop-product-right.html">${value.product.product_name} </a></h6>
+                            @php
+                                $reviewcount = App\Models\Review::where('product_id', $product->id)
+                                    ->where('status', 1)
+                                    ->latest()
+                                    ->get();
+                                $avarage = App\Models\Review::where('product_id', $product->id)
+                                    ->where('status', 1)
+                                    ->avg('rating');
+                            @endphp
                             <div class="product-rate-cover">
                                 <div class="product-rate d-inline-block">
-                                    <div class="product-rating" style="width: 90%"></div>
-                                </div>
-                                <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                                @if ($avarage == 0)
+                                                @elseif ($avarage == 1 || $avarage < 2)
+                                                    <div class="product-rating" style="width: 20%"></div>
+                                                @elseif ($avarage == 2 || $avarage < 3)
+                                                    <div class="product-rating" style="width: 40%"></div>
+                                                @elseif ($avarage == 3 || $avarage < 4)
+                                                    <div class="product-rating" style="width: 60%"></div>
+                                                @elseif ($avarage == 4 || $avarage < 5)
+                                                    <div class="product-rating" style="width: 80%"></div>
+                                                @elseif ($avarage == 5 || $avarage < 5)
+                                                    <div class="product-rating" style="width: 100%"></div>
+                                                @endif
+                                            </div>
+                                            <span class="font-small ml-5 text-muted">
+                                                ({{ count($reviewcount) }})
+                                            </span>
                             </div>
                         </td>
                         <td class="price" data-title="Price">
@@ -725,7 +747,7 @@
 
 
         // Cart Remove Start 
-        function cartRemove(id){
+        function cartRemove(id) {
             $.ajax({
                 type: "GET",
                 dataType: 'json',
