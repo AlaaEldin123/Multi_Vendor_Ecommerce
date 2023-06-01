@@ -15,8 +15,8 @@
                 <h1 class="display-2 mb-30">Page Not Found</h1>
                 <p class="font-lg text-grey-700 mb-30">
                     The link you clicked may be broken or the page may have been removed.<br />
-                    visit the <a href="index.html"> <span> Homepage</span></a> or <a
-                        href="page-contact.html"><span>Contact us</span></a> about the problem
+                    visit the <a href="{{ url('/') }}"> <span> Homepage</span></a> or <a
+                        href="{{ url('/') }}"><span>Contact us</span></a> about the problem
                 </p>
                 <div class="search-form">
 
@@ -27,7 +27,7 @@
         </div>
     </div>
 </div>
-    
+
 
 
 
