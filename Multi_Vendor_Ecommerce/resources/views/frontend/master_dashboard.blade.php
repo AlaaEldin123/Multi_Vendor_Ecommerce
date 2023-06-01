@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
 
 @php
-  $seo = App\Models\Seo::find(1);
+    $seo = App\Models\Seo::find(1);
 @endphp
 
 <head>
@@ -436,33 +436,13 @@
                         <td class="image product-thumbnail pt-40"><img src="/${value.product.product_thambnail}" alt="#" /></td>
                         <td class="product-des product-name">
                             <h6><a class="product-name mb-10" href="shop-product-right.html">${value.product.product_name} </a></h6>
-                            @php
-                                $reviewcount = App\Models\Review::where('product_id', $product->id)
-                                    ->where('status', 1)
-                                    ->latest()
-                                    ->get();
-                                $avarage = App\Models\Review::where('product_id', $product->id)
-                                    ->where('status', 1)
-                                    ->avg('rating');
-                            @endphp
+                            
                             <div class="product-rate-cover">
+                                <div class="product-rate-cover">
                                 <div class="product-rate d-inline-block">
-                                                @if ($avarage == 0)
-                                                @elseif ($avarage == 1 || $avarage < 2)
-                                                    <div class="product-rating" style="width: 20%"></div>
-                                                @elseif ($avarage == 2 || $avarage < 3)
-                                                    <div class="product-rating" style="width: 40%"></div>
-                                                @elseif ($avarage == 3 || $avarage < 4)
-                                                    <div class="product-rating" style="width: 60%"></div>
-                                                @elseif ($avarage == 4 || $avarage < 5)
-                                                    <div class="product-rating" style="width: 80%"></div>
-                                                @elseif ($avarage == 5 || $avarage < 5)
-                                                    <div class="product-rating" style="width: 100%"></div>
-                                                @endif
-                                            </div>
-                                            <span class="font-small ml-5 text-muted">
-                                                ({{ count($reviewcount) }})
-                                            </span>
+                                    <div class="product-rating" style="width: 90%"></div>
+                                </div>
+                                <span class="font-small ml-5 text-muted"> (4.0)</span>
                             </div>
                         </td>
                         <td class="price" data-title="Price">
@@ -584,7 +564,7 @@
                     $.each(response, function(key, value) {
                         rows += ` <tr class="pr_image">
                                 <td class="text-muted font-sm fw-600 font-heading mw-200">Preview</td>
-<td class="row_img"><img src="/${value.product.product_thambnail} " style="width:300px; height:300px;"  alt="compare-img" /></td>
+                            <td class="row_img"><img src="/${value.product.product_thambnail} " style="width:300px; height:300px;"  alt="compare-img" /></td>
                                 
                             </tr>
                             <tr class="pr_title">

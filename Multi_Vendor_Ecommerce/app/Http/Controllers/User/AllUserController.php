@@ -78,33 +78,32 @@ class AllUserController extends Controller
     {
 
         $orders = Order::where('user_id', Auth::id())->where('return_reason', '!=', NULL)->orderBy('id', 'DESC')->get();
-      
+
         return view('frontend.order.return_order_view', compact('orders'));
     } // End Method 
 
-    public function UserTrackOrder(){
+    public function UserTrackOrder()
+    {
         return view('frontend.userdashboard.user_track_order');
-    }// End Method 
+    } // End Method 
 
-    public function OrderTracking(Request $request){
-
+    public function OrderTracking(Request $request)
+    {
+        
         $invoice = $request->code;
 
-        $track = Order::where('invoice_no',$invoice)->first();
+        $track = Order::where('invoice_no', $invoice)->first();
 
         if ($track) {
-           return view('frontend.traking.track_order',compact('track'));
-
-        } else{
+            return view('frontend.traking.track_order', compact('track'));
+        } else {
 
             $notification = array(
-            'message' => 'Invoice Code Is Invalid',
-            'alert-type' => 'error'
-        );
+                'message' => 'Invoice Code Is Invalid',
+                'alert-type' => 'error'
+            );
 
-        return redirect()->back()->with($notification); 
-
+            return redirect()->back()->with($notification);
         }
-
-    }// End Method 
+    } // End Method 
 }
