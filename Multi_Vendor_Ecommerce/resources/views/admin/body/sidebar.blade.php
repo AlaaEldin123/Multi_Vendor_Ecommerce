@@ -159,7 +159,7 @@
 
     </ul>
     </li>
-@else
+
     <li>
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class="bx bx-category"></i>
@@ -230,6 +230,9 @@
             <li> <a href="{{ route('complete.return.request') }}"><i class="bx bx-right-arrow-alt"></i>Complete
                     Request</a>
             </li>
+            
+        </ul>
+        @else
             @endif
 
 
@@ -311,7 +314,19 @@
             </li>
 
 
+            <li>
+                <a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><i class="bx bx-category"></i>
+                    </div>
+                    <div class="menu-title">Stock Manage</div>
+                </a>
+                <ul>
+                    <li> <a href="{{ route('product.stock') }}"><i class="bx bx-right-arrow-alt"></i>Product
+                            Stock</a>
+                    </li>
 
+                </ul>
+            </li>
 
 
 

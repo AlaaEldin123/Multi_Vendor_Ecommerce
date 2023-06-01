@@ -106,17 +106,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/update/banner', 'UpdateBanner')->name('update.banner');
         Route::get('/delete/banner/{id}', 'DeleteBanner')->name('delete.banner');
     });
-
-
-
-    
-
-
-
-
-
-
-
 });
 
 
@@ -259,6 +248,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/product/inactive/{id}', 'ProductInactive')->name('product.inactive');
         Route::get('/product/active/{id}', 'ProductActive')->name('product.active');
         Route::get('/delete/product/{id}', 'ProductDelete')->name('delete.product');
+        // For Product Stock
+        Route::get('/product/stock', 'ProductStock')->name('product.stock');
     });
 
 
@@ -549,6 +540,8 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         Route::get('/user/invoice_download/{order_id}', 'UserOrderInvoice');
 
         Route::get('/return/order/page', 'ReturnOrderPage')->name('return.order.page');
+        // Order Tracking 
+        Route::get('/user/track/order', 'UserTrackOrder')->name('user.track.order');
     });
 }); // end group middleware user
 

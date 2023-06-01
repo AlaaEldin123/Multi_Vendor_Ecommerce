@@ -64,7 +64,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div>  
         </div>
     </div>
     <div class="header-middle header-middle-ptb-1 d-none d-lg-block">
