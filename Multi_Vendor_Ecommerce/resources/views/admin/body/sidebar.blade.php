@@ -293,6 +293,32 @@
             </li>
 
 
+            <li>
+                <a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><i class="bx bx-category"></i>
+                    </div>
+                    <div class="menu-title">Setting Manage</div>
+                </a>
+                <ul>
+                    <li> <a href="{{ route('site.setting') }}"><i class="bx bx-right-arrow-alt"></i>Site Setting</a>
+                    </li>
+
+                    <li> <a href="{{ route('seo.setting') }}"><i class="bx bx-right-arrow-alt"></i>Seo Setting</a>
+                    </li>
+
+
+                </ul>
+            </li>
+
+
+
+
+
+
+
+
+
+
 
 
             <!--end navigation-->

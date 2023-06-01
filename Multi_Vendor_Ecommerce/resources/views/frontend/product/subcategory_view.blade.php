@@ -20,7 +20,7 @@
 
                     <div class="breadcrumb">
 
-                        <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                        <a href="" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
 
                         <span></span>{{ $breadsubcat->category->category_name }} <span></span>
                         {{ $breadsubcat->subcategory_name }}

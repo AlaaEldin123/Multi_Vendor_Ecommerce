@@ -1,5 +1,6 @@
 @php
     $categories = App\Models\Category::orderBy('category_name', 'ASC')->get();
+    $setting = App\Models\SiteSetting::find(1);
 @endphp
 
 
@@ -70,8 +71,7 @@
         <div class="container">
             <div class="header-wrap">
                 <div class="logo logo-width-1">
-                    <a href="index.html"><img src="{{ asset('frontend/assets/imgs/theme/logo.svg') }}"
-                            alt="logo" /></a>
+                    <a href=""><img src="{{ asset($setting->logo) }}" alt="logo" /></a>
                 </div>
                 <div class="header-right">
                     <div class="search-style-2">
@@ -118,7 +118,8 @@
 
                             <div class="header-action-icon-2">
                                 <a href="{{ route('compare') }}">
-                                    <img class="svgInject" alt="Nest" src="{{ asset('frontend/assets/imgs/theme/icons/icon-compare.svg')}}" />
+                                    <img class="svgInject" alt="Nest"
+                                        src="{{ asset('frontend/assets/imgs/theme/icons/icon-compare.svg') }}" />
                                 </a>
                                 <a href="{{ route('compare') }}"><span class="lable ml-0">Compare</span></a>
                             </div>
@@ -143,12 +144,12 @@
 
 
                             <div class="header-action-icon-2">
-                                <a class="mini-cart-icon" href="{{route('mycart')}}">
+                                <a class="mini-cart-icon" href="{{ route('mycart') }}">
                                     <img alt="Nest"
                                         src="{{ asset('frontend/assets/imgs/theme/icons/icon-cart.svg') }}" />
                                     <span class="pro-count blue" id="cartQty">0</span>
                                 </a>
-                                <a href="{{route('mycart')}}"><span class="lable">Cart</span></a>
+                                <a href="{{ route('mycart') }}"><span class="lable">Cart</span></a>
                                 <div class="cart-dropdown-wrap cart-dropdown-hm2">
 
                                     <!--   // mini cart start with ajax -->
@@ -179,7 +180,8 @@
                                         <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
                                             <ul>
                                                 <li>
-                                                    <a href="{{ route('dashboard') }}"><i class="fi fi-rs-user mr-10"></i>My
+                                                    <a href="{{ route('dashboard') }}"><i
+                                                            class="fi fi-rs-user mr-10"></i>My
                                                         Account</a>
                                                 </li>
                                                 <li>
@@ -233,8 +235,7 @@
         <div class="container">
             <div class="header-wrap header-space-between position-relative">
                 <div class="logo logo-width-1 d-block d-lg-none">
-                    <a href="index.html"><img src="{{ asset('frontend/assets/imgs/theme/logo.svg') }}"
-                            alt="logo" /></a>
+                    <a href=""><img src="{{ asset($setting->logo) }}" alt="logo" /></a>
                 </div>
                 <div class="header-nav d-none d-lg-flex">
                     <div class="main-categori-wrap d-none d-lg-block">
@@ -342,7 +343,7 @@
 
                 <div class="hotline d-none d-lg-flex">
                     <img src="{{ asset('frontend/assets/imgs/theme/icons/icon-headphone.svg') }}" alt="hotline" />
-                    <p>1900 - 888<span>24/7 Support Center</span></p>
+                    <p>{{ $setting->support_phone }}<span>24/7 Support Center</span></p>
                 </div>
                 <div class="header-action-icon-2 d-block d-lg-none">
                     <div class="burger-icon burger-icon-white">
