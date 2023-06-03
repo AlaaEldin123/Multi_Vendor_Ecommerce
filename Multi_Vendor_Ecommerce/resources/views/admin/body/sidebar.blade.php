@@ -331,6 +331,22 @@
 
 
 
+    <li>
+        <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><i class="bx bx-category"></i>
+            </div>
+            <div class="menu-title">Roles & Permission</div>
+        </a>
+        <ul>
+            <li> <a href="{{route('all.permission')}}"><i class="bx bx-right-arrow-alt"></i>All
+                    Permission</a> 
+            </li>
+
+            <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Add
+                Permission</a>
+            </li>
+        </ul>
+    </li>
 
 
 

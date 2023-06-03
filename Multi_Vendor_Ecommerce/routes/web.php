@@ -28,6 +28,7 @@ use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\User\AllUserController;
 use App\Http\Controllers\Backend\ActiveUserController;
 use App\Http\Controllers\Backend\BlogController;
+use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\User\ReviewController;
 use App\Http\Controllers\Backend\SiteSettingController;
 
@@ -386,6 +387,26 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
         Route::get('/admin/delete/blog/post/{id}', 'DeleteBlogPost')->name('delete.blog.post');
     });
+
+
+
+    // Permession All Route 
+    Route::controller(RoleController::class)->group(function () {
+
+        Route::get('/all/permission', 'AllPermission')->name('all.permission');
+
+        
+    });
+
+
+
+
+
+
+
+
+
+
 });
 
 
