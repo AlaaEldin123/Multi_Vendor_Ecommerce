@@ -11,7 +11,31 @@ use Spatie\Permission\Models\Permission;
 class RoleController extends Controller
 {
     public function AllPermission()
-    {   $permissions = Permission::all();
-        return view('backend.pages.permission.all_permission',compact('permissions'));
+    {
+        $permissions = Permission::all();
+
+        return view('backend.pages.permission.all_permission', compact('permissions'));
     }
+    public function AddPermission()
+    {
+        return view('backend.pages.permission.add_permission');
+    } // END METHOD
+
+    public function StorePermission(Request $request)
+    {
+
+        Permission::create([
+            'name' => $request->name,
+            'group_name' => $request->group_name,
+
+        ]);
+
+        $notification = array(
+            'message' => 'Permission Inserted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.permission')->with($notification);
+    } // End Method 
+
 }
