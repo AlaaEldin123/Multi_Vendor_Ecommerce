@@ -57,11 +57,44 @@ class User extends Authenticatable
     } // End Method 
 
 
-    public static function getpermissionByGroupName($group_name){
+    public static function getpermissionByGroupName($group_name)
+    {
         $permissions = DB::table('permissions')
-                        ->select('name','id')
-                        ->where('group_name',$group_name)
-                        ->get();
+            ->select('name', 'id')
+            ->where('group_name', $group_name)
+            ->get();
         return $permissions;
-    }// End Method 
+    } // End Method 
+
+
+    public static function roleHasPermissions($role, $permissions)
+    {
+
+        $hasPermission = true;
+        foreach ($permissions as $permission) {
+            if (!$role->hasPermissionTo($permission->name)) {
+                $hasPermission = false;
+                return $hasPermission;
+            }
+            return $hasPermission;
+        }
+    } // End Method 
+
+
+    public function AdminRolesUpdate(Request $request, $id)
+    {
+        $role = Role::findOrFail($id);
+        $permissions = $request->permission;
+
+        if (!empty($permissions)) {
+            $role->syncPermissions($permissions);
+        }
+
+        $notification = array(
+            'message' => 'Role Permission Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.roles.permission')->with($notification);
+    } // End Method 
 }
