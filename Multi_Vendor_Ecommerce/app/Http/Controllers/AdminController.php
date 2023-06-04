@@ -263,4 +263,6 @@ class AdminController extends Controller
         return redirect()->back()->with($notification);
 
     }// End Mehtod 
+
+    
 }

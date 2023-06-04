@@ -12,8 +12,8 @@ use Carbon\Carbon;
 use Auth;
 use App\Mail\OrderMail;
 use App\Models\User;
-use App\Notifications\OrderComplete;
 
+use App\Notifications\OrderComplete;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 
