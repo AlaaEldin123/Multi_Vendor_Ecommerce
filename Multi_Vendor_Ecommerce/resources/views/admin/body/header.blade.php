@@ -64,8 +64,15 @@
                     </li>
                     <li class="nav-item dropdown dropdown-large">
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#"
-                            role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span
-                                class="alert-count">7</span>
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span class="alert-count">
+                                @php
+                                    $ncount = Auth::user()
+                                        ->unreadNotifications()
+                                        ->count();
+                                @endphp
+                                {{ $ncount }}
+
+                            </span>
                             <i class='bx bx-bell'></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
@@ -76,19 +83,27 @@
                                 </div>
                             </a>
                             <div class="header-notifications-list">
-                                
-                                <a class="dropdown-item" href="javascript:;">
-                                    <div class="d-flex align-items-center">
-                                        <div class="notify bg-light-primary text-primary"><i class="bx bx-group"></i>
+
+                                @php
+                                    $user = Auth::user();
+                                @endphp
+                                @forelse($user->notifications as $notification)
+                                    <a class="dropdown-item" href="javascript:;">
+                                        <div class="d-flex align-items-center">
+                                            <div class="notify bg-light-primary text-primary"><i
+                                                    class="bx bx-group"></i>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h6 class="msg-name">Message <span
+                                                        class="msg-time float-end">{{ Carbon\Carbon::parse($notification->created_at)->diffForHumans() }}
+                                                    </span></h6>
+                                                <p class="msg-info">{{ $notification->data['message'] }}</p>
+                                            </div>
                                         </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="msg-name">New Customers<span class="msg-time float-end">14 Sec
-                                                    ago</span></h6>
-                                            <p class="msg-info">5 new user registered</p>
-                                        </div>
-                                    </div>
-                                </a>
-                        
+                                    </a>
+                                @empty
+                                @endforelse
+
                             </div>
                             <a href="javascript:;">
                                 <div class="text-center msg-footer">View All Notifications</div>
