@@ -31,7 +31,7 @@
 
                 <div class="btn-group">
 
-                    <a href="{{ route('add.category') }}" class="btn btn-primary">Add Admin User</a>
+                    <a href="{{ route('add.admin') }}" class="btn btn-primary">Add Admin User</a>
 
                 </div>
 
