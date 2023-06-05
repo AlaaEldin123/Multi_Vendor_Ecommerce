@@ -24,7 +24,7 @@ class ShopController extends Controller
             $catIds = Category::select('id')->whereIn('category_slug', $slugs)->pluck('id')->toArray();
             $products = Product::whereIn('category_id', $catIds)->get();
         }
-        if (!empty($_GET['brand'])) {
+        elseif (!empty($_GET['brand'])) {
             $slugs = explode(',', $_GET['brand']);
             $brandIds = Brand::select('id')->whereIn('brand_slug', $slugs)->pluck('id')->toArray();
             $products = Product::whereIn('brand_id', $brandIds)->get();
@@ -48,8 +48,9 @@ class ShopController extends Controller
     } // End Method 
 
 
-    
-    public function ShopFilter(Request $request){
+
+    public function ShopFilter(Request $request)
+    {
 
         $data = $request->all();
 
@@ -57,11 +58,11 @@ class ShopController extends Controller
 
         $catUrl = "";
         if (!empty($data['category'])) {
-            foreach($data['category'] as $category){
+            foreach ($data['category'] as $category) {
                 if (empty($catUrl)) {
-                    $catUrl .= '&category='.$category;
-                }else{
-                    $catUrl .= ','.$category;
+                    $catUrl .= '&category=' . $category;
+                } else {
+                    $catUrl .= ',' . $category;
                 }
             }
         }
@@ -71,11 +72,11 @@ class ShopController extends Controller
 
         $brandUrl = "";
         if (!empty($data['brand'])) {
-            foreach($data['brand'] as $brand){
+            foreach ($data['brand'] as $brand) {
                 if (empty($brandUrl)) {
-                    $brandUrl .= '&brand='.$brand;
-                }else{
-                    $brandUrl .= ','.$brand;
+                    $brandUrl .= '&brand=' . $brand;
+                } else {
+                    $brandUrl .= ',' . $brand;
                 }
             }
         }
@@ -84,12 +85,11 @@ class ShopController extends Controller
 
         $priceRangeUrl = "";
         if (!empty($data['price_range'])) {
-           $priceRangeUrl .= '&price='.$data['price_range'];
+            $priceRangeUrl .= '&price=' . $data['price_range'];
         }
 
 
 
-        return redirect()->route('shop.page',$catUrl.$brandUrl.$priceRangeUrl);
-
-    }// End Method 
+        return redirect()->route('shop.page', $catUrl . $brandUrl . $priceRangeUrl);
+    } // End Method 
 }
