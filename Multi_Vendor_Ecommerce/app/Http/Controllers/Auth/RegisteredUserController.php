@@ -47,17 +47,10 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
-
-
+        
         $nuser = User::where('role','admin')->get();
 
-
-
         Notification::send($nuser , new RegisterUserNotification($request));
-
-
-
-
 
         return redirect(RouteServiceProvider::HOME);
     }
